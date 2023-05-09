@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Star Games App</string>
+    <string name="main_daily_entries">Daily entries: %d/15</string>
+    <string name="special_daily_entries">Daily entries: %1$d/10</string>
+    <string name="enter_your_email">Enter your email address</string>
+    <string name="create_a_password">Create a password</string>
+    <string name="re_enter_password">Re-enter your password</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_conta_big">CREATE ACCOUNT</string>
+    <string name="i_already_have_account">I Already Have An Account</string>
+    <string name="login_big">LOG IN TO THE ACCOUNT</string>
+    <string name="login">Log In To The Account</string>
+    <string name="i_dont_have_account">I Don\'t Have An Account</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="provide_your_name">Provide your name</string>
+    <string name="enter_your_first_name">Enter your first name</string>
+    <string name="enter_your_last_name">Enter your last name</string>
+    <string name="save">Save</string>
+    <string name="games">GAMES</string>
+    <string name="main_games">MAIN GAMES</string>
+    <string name="special_games">SPECIAL GAMES</string>
+    <string name="access">ACCESS</string>
+    <string name="daily_collection">Daily\nCollection</string>
+    <string name="daily_collection_big">DAILY COLLECTION</string>
+    <string name="daily_event_desc">Reach the points goal to receive valuable items!</string>
+    <string name="points_big">POINTS: %1$d</string>
+    <string name="missions_big">MISSIONS</string>
+    <string name="collect_500_stars">Collect 500 Stars</string>
+    <string name="receive">RECEIVE</string>
+    <string name="incomplete">INCOMPLETE</string>
+    <string name="use_5_tickets">Use 5 Tickets</string>
+    <string name="enter_the_app">Enter the app</string>
+    <string name="memory_game">MEMORY GAME</string>
+    <string name="memory_game_desc">Match the figures using\nyour visual memory.</string>
+    <string name="seconds_remaining">Seconds remaining: %1$d</string>
+    <string name="phase">Phase: %s</string>
+    <string name="rewards_big">REWARDS</string>
+    <string name="prizes_big">PRIZE(S)</string>
+    <string name="collected">COLLECTED</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
+
+</resources>

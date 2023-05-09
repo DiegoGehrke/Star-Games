@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReferralActivity"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/gradient_toolbar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/big_back_btn" />
+
+        <TextView
+            android:id="@+id/event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/inter_black"
+            android:text="REFERRAL PROGRAM"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/referral_program_header"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="-4.5dp"
+        android:src="@drawable/event_header_no_stroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <ImageView
+        android:id="@+id/referral_code_frame"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="-24dp"
+        android:src="@drawable/referral_code_frame"
+        app:layout_constraintBottom_toBottomOf="@+id/referral_program_header"
+        app:layout_constraintEnd_toEndOf="@+id/referral_program_header"
+        app:layout_constraintStart_toStartOf="@+id/referral_program_header"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/help_icon"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/referral_program_header"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:src="@drawable/frame_event_desc"
+        app:layout_constraintEnd_toEndOf="@+id/referral_program_header"
+        app:layout_constraintStart_toStartOf="@+id/referral_program_header"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/linden_hill"
+        android:text="Convide amigos e ganhe Estrelas!"
+        android:textColor="#CCE4F7"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+    <TextView
+        android:id="@+id/user_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/inter_black"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/copy_code"
+        app:layout_constraintEnd_toEndOf="@+id/referral_code_frame"
+        app:layout_constraintStart_toStartOf="@+id/referral_code_frame"
+        app:layout_constraintTop_toTopOf="@+id/referral_code_frame" />
+
+    <ImageView
+        android:id="@+id/copy_code"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/copy_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/referral_code_frame"
+        app:layout_constraintEnd_toEndOf="@+id/referral_code_frame"
+        app:layout_constraintStart_toStartOf="@+id/referral_code_frame" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="9999dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="-26dp"
+        android:src="@drawable/event_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/referral_program_header" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="CONVIDADOS: 0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <TextView
+        android:id="@+id/prizes_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Prêmios:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/first_quest_frame"
+        android:layout_width="344dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/item_list_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prizes_txt" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/quinhentos_stars"
+        app:layout_constraintBottom_toTopOf="@+id/first_quest_progress"
+        app:layout_constraintStart_toStartOf="@+id/first_quest_frame" />
+
+    <ProgressBar
+        android:id="@+id/first_quest_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp"
+        android:indeterminate="false"
+        android:max="5"
+        android:progress="0"
+        android:progressDrawable="@drawable/event_progress_bar"
+        app:layout_constraintBottom_toBottomOf="@+id/first_quest_frame"
+        app:layout_constraintStart_toStartOf="@+id/first_quest_frame" />
+
+    <TextView
+        android:id="@+id/first_quest_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="META: 5 CONVIDADOS"
+        android:textColor="#D4D8F8"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="@+id/first_quest_frame"
+        app:layout_constraintTop_toTopOf="@+id/first_quest_frame" />
+
+    <TextView
+        android:id="@+id/first_quest_progress_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="0/5"
+        android:textColor="#FF8585"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/first_quest_frame"
+        app:layout_constraintStart_toEndOf="@+id/first_quest_progress"
+        />
+
+    <LinearLayout
+        android:id="@+id/claim_btn"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/first_quest_frame"
+        app:layout_constraintEnd_toEndOf="@+id/first_quest_frame"
+        app:layout_constraintTop_toTopOf="@+id/first_quest_frame">
+
+        <LinearLayout
+            android:id="@+id/claim_btn_background"
+            android:layout_width="108dp"
+            android:layout_height="36dp"
+            android:background="@drawable/event_unable_button"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/claim_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_extrabold"
+                android:gravity="center"
+                android:text="@string/incomplete"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/custom_edittext"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_quest_frame" />
+
+    <LinearLayout
+        android:id="@+id/add_referral_btn"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText">
+
+        <LinearLayout
+            android:id="@+id/referral_btn_background"
+            android:layout_width="108dp"
+            android:layout_height="36dp"
+            android:background="@drawable/event_unable_button"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/referral_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_extrabold"
+                android:gravity="center"
+                android:text="ADD REFF"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

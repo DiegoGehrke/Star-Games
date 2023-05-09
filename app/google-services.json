@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "553398888526",
+    "project_id": "star-games-app",
+    "storage_bucket": "star-games-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553398888526:android:e522dd7407084bde1abb1f",
+        "android_client_info": {
+          "package_name": "com.star.games.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553398888526-0e963k5j786h5vsf7vk6apf8halptnrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDluktaZSTfhpiW02T33-9OKRigdcpgSyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553398888526-0e963k5j786h5vsf7vk6apf8halptnrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

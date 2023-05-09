@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfigurationsActivity"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/gradient_toolbar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/big_back_btn" />
+
+        <TextView
+            android:id="@+id/event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/inter_black"
+            android:text="CONFIGURATIONS"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/help_support_btn"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/help_support_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:text="Ajuda e suporte"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/help_support_btn"
+        app:layout_constraintStart_toStartOf="@+id/help_support_btn"
+        app:layout_constraintTop_toBottomOf="@+id/help_support_btn" />
+
+    <ImageView
+        android:id="@+id/manage_account_btn"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/account_managment_icon"
+        app:layout_constraintStart_toEndOf="@id/help_support_btn"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:text="Gerenciar conta"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/manage_account_btn"
+        app:layout_constraintStart_toStartOf="@+id/manage_account_btn"
+        app:layout_constraintTop_toBottomOf="@+id/manage_account_btn" />
+
+    <ImageView
+        android:id="@+id/configurations_btn"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/configurations_icon"
+        app:layout_constraintStart_toEndOf="@id/manage_account_btn"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:text="Conofigurações"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/configurations_btn"
+        app:layout_constraintStart_toStartOf="@+id/configurations_btn"
+        app:layout_constraintTop_toBottomOf="@+id/configurations_btn" />
+
+    <ImageView
+        android:id="@+id/policy_privacy_btn"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/policy_privacy_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="Política de\nPrivacidade"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/policy_privacy_btn"
+        app:layout_constraintStart_toStartOf="@+id/policy_privacy_btn"
+        app:layout_constraintTop_toBottomOf="@+id/policy_privacy_btn" />
+
+    <ImageView
+        android:id="@+id/terms_of_use_btn"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/policy_privacy_icon"
+        app:layout_constraintStart_toEndOf="@id/policy_privacy_btn"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="Termos de\nUso"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/terms_of_use_btn"
+        app:layout_constraintStart_toStartOf="@+id/terms_of_use_btn"
+        app:layout_constraintTop_toBottomOf="@+id/terms_of_use_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

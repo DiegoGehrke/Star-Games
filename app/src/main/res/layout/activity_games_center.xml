@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GamesCenterActivity"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/gradient_toolbar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/big_back_btn" />
+
+        <TextView
+            android:id="@+id/event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/inter_black"
+            android:text="@string/main_games"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/first_game"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/choose_event_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <ImageView
+        android:id="@+id/first_game_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="-32dp"
+        android:background="@drawable/memory_game_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/first_game"
+        app:layout_constraintStart_toStartOf="@+id/first_game"
+        app:layout_constraintTop_toTopOf="@+id/first_game" />
+
+    <TextView
+        android:id="@+id/first_game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/memory_game"
+        android:textColor="#B3BED4"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/first_game"
+        app:layout_constraintStart_toStartOf="@+id/first_game"
+        app:layout_constraintTop_toTopOf="@+id/first_game" />
+
+    <TextView
+        android:id="@+id/first_game_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:text="@string/memory_game_desc"
+        android:textColor="#A0AEC9"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/first_game"
+        app:layout_constraintStart_toStartOf="@+id/first_game"
+        app:layout_constraintTop_toBottomOf="@+id/first_game_name" />
+
+    <ImageView
+        android:id="@+id/go_to_memory_game_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/back_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/first_game"
+        app:layout_constraintEnd_toEndOf="@+id/first_game"
+        app:layout_constraintTop_toTopOf="@+id/first_game" />
+
+    <ImageView
+        android:id="@+id/second_game"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/choose_event_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_game" />
+
+    <ImageView
+        android:id="@+id/second_game_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="-32dp"
+        android:background="@drawable/memory_game_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/second_game"
+        app:layout_constraintStart_toStartOf="@+id/second_game"
+        app:layout_constraintTop_toTopOf="@+id/second_game" />
+
+    <TextView
+        android:id="@+id/second_game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_black"
+        android:text="MATH GAME"
+        android:textColor="#B3BED4"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/second_game"
+        app:layout_constraintStart_toStartOf="@+id/second_game"
+        app:layout_constraintTop_toTopOf="@+id/second_game" />
+
+    <TextView
+        android:id="@+id/second_game_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:text="@string/memory_game_desc"
+        android:textColor="#A0AEC9"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/second_game_name"
+        app:layout_constraintStart_toStartOf="@+id/second_game_name"
+        app:layout_constraintTop_toBottomOf="@+id/second_game_name" />
+
+    <ImageView
+        android:id="@+id/go_to_math_game_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/back_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/second_game"
+        app:layout_constraintEnd_toEndOf="@+id/second_game"
+        app:layout_constraintTop_toTopOf="@+id/second_game" />
+
+
+    <ImageView
+        android:id="@+id/third_game"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/choose_event_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/second_game" />
+
+    <ImageView
+        android:id="@+id/third_game_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="-32dp"
+        android:background="@drawable/memory_game_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/third_game"
+        app:layout_constraintStart_toStartOf="@+id/third_game"
+        app:layout_constraintTop_toTopOf="@+id/third_game" />
+
+    <TextView
+        android:id="@+id/third_game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_black"
+        android:text="MATH GAME"
+        android:textColor="#B3BED4"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/third_game"
+        app:layout_constraintStart_toStartOf="@+id/third_game"
+        app:layout_constraintTop_toTopOf="@+id/third_game" />
+
+    <TextView
+        android:id="@+id/third_game_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:text="@string/memory_game_desc"
+        android:textColor="#A0AEC9"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/third_game_name"
+        app:layout_constraintStart_toStartOf="@+id/third_game_name"
+        app:layout_constraintTop_toBottomOf="@+id/third_game_name" />
+
+    <ImageView
+        android:id="@+id/go_to_numeric_repetition_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/back_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/third_game"
+        app:layout_constraintEnd_toEndOf="@+id/third_game"
+        app:layout_constraintTop_toTopOf="@+id/third_game" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
