@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.graphics.drawable.ColorDrawable
-import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -17,8 +16,9 @@ class RewardDialog(private var context : Context) {
     private lateinit var closeTxt: TextView
     private lateinit var dialogTitle: TextView
     private lateinit var itemImage : ImageView
+    private lateinit var itemAmount : TextView
 
-    fun showRewardDialog(image : Int) {
+    fun showRewardDialog(rewardImg: Int, rewardAmount: Float) {
         rewardDialog = Dialog(context)
         rewardDialog.setContentView(R.layout.reward_dialog_layout)
         rewardDialog.setCancelable(true)
@@ -30,17 +30,19 @@ class RewardDialog(private var context : Context) {
         closeTxt = rewardDialog.findViewById(R.id.close_txt)
         dialogTitle = rewardDialog.findViewById(R.id.title_txt)
         itemImage = rewardDialog.findViewById(R.id.item_img)
+        itemAmount = rewardDialog.findViewById(R.id.item_reward_amount)
         textUI()
-        itemImage.setImageResource(image)
+        itemImage.setImageResource(rewardImg)
+        itemAmount.text = rewardAmount.toString()
         rewardDialog.show()
     }
 
     private fun textUI() {
         val textShader: Shader = LinearGradient(
-            0f, 0f, 0f, dialogTitle.textSize, // Change the ending y-coordinate to be textSize
+            0f, 0f, 0f, dialogTitle.textSize,
             intArrayOf(
-                Color.parseColor("#FFEAA9"), // First color
-                Color.parseColor("#4E3B00") // Second color
+                Color.parseColor("#FFF3C9"),
+                Color.parseColor("#BFA239")
             ),
             null,
             Shader.TileMode.MIRROR
@@ -48,10 +50,10 @@ class RewardDialog(private var context : Context) {
         dialogTitle.paint.shader = textShader
 
         val textShader1: Shader = LinearGradient(
-            0f, 24f, 0f, closeTxt.textSize, // Change the ending y-coordinate to be textSize
+            0f, 24f, 0f, closeTxt.textSize,
             intArrayOf(
-                Color.parseColor("#308A4C"), // First color
-                Color.parseColor("#004511") // Second color
+                Color.parseColor("#308A4C"),
+                Color.parseColor("#004511")
             ),
             null,
             Shader.TileMode.MIRROR

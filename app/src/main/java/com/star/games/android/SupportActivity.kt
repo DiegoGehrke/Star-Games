@@ -4,25 +4,30 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.RecyclerView
 
 class SupportActivity : AppCompatActivity() {
 
     private lateinit var linearLayout: LinearLayout
+
     private lateinit var screenTitle: TextView
+
     private lateinit var parentLayout : ConstraintLayout
-    private lateinit var parentLayout1 : ConstraintLayout
-    private lateinit var parentLayout2 : ConstraintLayout
-    private lateinit var parentLayout3 : ConstraintLayout
+
+    private lateinit var backBtn: ImageView
+
     private lateinit var sharedPreferences : SharedPreferences
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +37,8 @@ class SupportActivity : AppCompatActivity() {
 
         linearLayout = findViewById(R.id.linearLayout)
         screenTitle = findViewById(R.id.screen_title)
-        val backBtn : ImageView = findViewById(R.id.back_btn)
+        backBtn = findViewById(R.id.back_btn)
+        recyclerView = findViewById(R.id.recycler_view)
 
         if (sharedPreferences.getString("helpType", "") == "support") {
            createSupportUI()
@@ -44,7 +50,8 @@ class SupportActivity : AppCompatActivity() {
             createAccountSectionUI()
         }
         else if (sharedPreferences.getString("helpType", "") == "commonQuests") {
-            createCommonQuestionsUI()
+
+
         }
         else {
             createSupportUI()
@@ -60,7 +67,7 @@ class SupportActivity : AppCompatActivity() {
 
     private fun createSupportUI() {
         val context : Context = this@SupportActivity
-        screenTitle.text = "Support"
+        screenTitle.text = getString(R.string.support_mini)
         val supportFirstTxt = TextView(context)
         val supportSecondTxt = TextView(context)
         val supportThirdTxt = TextView(context)
@@ -97,26 +104,25 @@ class SupportActivity : AppCompatActivity() {
         supportTxt.typeface = ResourcesCompat.getFont(this, R.font.inter_semibold)
         supportTxt.setTextColor(Color.WHITE)
 
-        supportFirstTxt.text = "Esta é a seção de \"Suporte\" do nosso aplicativo, que tem como objetivo ajudá-lo em caso de quaisquer dúvidas ou problemas."
-        supportSecondTxt.text = "Para entrar em contato conosco, basta clicar no botão \"Suporte\" logo abaixo. Você poderá nos enviar um e-mail para que nossa equipe possa ajudá-lo da melhor forma possível."
-        supportThirdTxt.text = "Nossa equipe de suporte está disponível para ajudá-lo a qualquer hora do dia ou da noite, e faremos o possível para responder rapidamente e com soluções efetivas para seus problemas."
-        supportFourthTxt.text = "Além disso, em nossa seção de \"Perguntas frequentes\", você encontrará respostas para as perguntas mais comuns que recebemos dos nossos usuários. Recomendamos que você dê uma olhada nesta seção antes de entrar em contato conosco, pois sua dúvida pode já ter sido respondida lá."
-        supportFifthTxt.text = "Agradecemos a confiança que você deposita em nosso aplicativo e estamos sempre trabalhando para melhorar sua experiência. Se precisar de ajuda, não hesite em nos contatar através da seção de \"Suporte\"."
-        supportTxt.text = "SUPPORT"
+        supportFirstTxt.text = getString(R.string.this_is_the_support_section_of_our_application_which_aims_to_help_you_in_case_of_any_questions_or_problems)
+        supportSecondTxt.text = getString(R.string.to_contact_us_just_click_on_the_support_button_below_you_can_send_us_an_email_so_that_our_team_can_help_you_in_the_best_way_possible)
+        supportThirdTxt.text = getString(R.string.our_support_team_is_available_to_help_you_anytime_day_or_night_and_we_will_do_our_best_to_respond_quickly_and_with_effective_solutions_to_your_issues)
+        supportFourthTxt.text = getString(R.string.also_in_our_frequently_asked_questions_section_you_ll_find_answers_to_the_most_common_questions_we_receive_from_our_users_we_recommend_that_you_take_a_look_at_this_section_before_contacting_us_as_your_question_may_already_be_answered_there)
+        supportFifthTxt.text = getString(R.string.we_appreciate_the_trust_you_place_in_our_app_and_we_are_always_working_to_improve_your_experience_if_you_need_help_don_t_hesitate_to_contact_us_through_the_support_section)
+        supportTxt.text = getString(R.string.support)
         supportButton.setOnClickListener {
             val intent = Intent(this, SendEmailToSupportActivity::class.java)
             startActivity(intent)
         }
 
         val parentLayout = findViewById<ConstraintLayout>(R.id.background)
-        val parentLayout1 = findViewById<ConstraintLayout>(R.id.background)
 
         parentLayout.addView(supportFirstTxt)
         parentLayout.addView(supportSecondTxt)
         parentLayout.addView(supportThirdTxt)
         parentLayout.addView(supportFourthTxt)
         parentLayout.addView(supportFifthTxt)
-        parentLayout1.addView(supportButton)
+        parentLayout.addView(supportButton)
         parentLayout.addView(supportTxt)
 
         val setBackground = ConstraintSet()
@@ -125,7 +131,7 @@ class SupportActivity : AppCompatActivity() {
         setBackground.connect(supportButton.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
         setBackground.connect(supportButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
         setBackground.connect(supportButton.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 48)
-        setBackground.applyTo(parentLayout1)
+        setBackground.applyTo(parentLayout)
 
         val constraintSet = ConstraintSet()
         constraintSet.constrainWidth(supportFirstTxt.id, ConstraintSet.WRAP_CONTENT)
@@ -170,7 +176,7 @@ class SupportActivity : AppCompatActivity() {
 
     private fun createEventsSectionUI() {
         val contextEvent : Context = this@SupportActivity
-        screenTitle.text = "Eventos"
+        screenTitle.text = getString(R.string.events)
         val eventsFirstTxt = TextView(contextEvent)
         val eventsSecondTxt = TextView(contextEvent)
         val eventsThirdTxt = TextView(contextEvent)
@@ -199,11 +205,11 @@ class SupportActivity : AppCompatActivity() {
         eventsFifthTxt.textSize = 16f
         eventsFifthTxt.typeface = ResourcesCompat.getFont(this, R.font.inter_medium)
 
-        eventsFirstTxt.text = "Essa é a seção de \"Eventos\" na nossa Central de Ajuda! Aqui, você encontrará informações sobre os eventos que ocorrem no nosso aplicativo."
-        eventsSecondTxt.text = "Nossos eventos são divertidos e fáceis de participar. Eles variam desde jogos simples até desafios mais complexos, mas todos eles oferecem a chance de ganhar prêmios incríveis! Você pode receber Estrelas, pontos VIP e outros itens de graça."
-        eventsThirdTxt.text = "Para participar, basta escolher um evento na aba vertical que fica no lado direito da tela principal do aplicativo. Certifique-se de verificar as regras e os requisitos de cada evento para garantir sua participação e premiação. Não se preocupe, tudo é explicado de forma clara e fácil de entender."
-        eventsFourthTxt.text = "É importante destacar que os eventos são redefinidos todos os dias às 21:00 BRT. Isso significa que você terá uma nova oportunidade de participar e ganhar prêmios a cada dia! Então, não perca a chance de participar e aumentar suas chances de ganhar."
-        eventsFifthTxt.text = "Agradecemos por fazer parte da nossa comunidade e estamos animados para ver você participando dos nossos eventos diários. Boa sorte e divirta-se!"
+        eventsFirstTxt.text = getString(R.string.this_is_the_events_section_of_our_help_center_here_you_will_find_information_about_the_events_that_take_place_in_our_application)
+        eventsSecondTxt.text = getString(R.string.our_events_are_fun_and_easy_to_attend_they_range_from_simple_games_to_more_complex_challenges_but_they_all_offer_the_chance_to_win_amazing_prizes_you_can_receive_stars_vip_points_and_other_items_for_free)
+        eventsThirdTxt.text = getString(R.string.to_participate_simply_choose_an_event_in_the_vertical_tab_on_the_right_side_of_the_application_s_main_screen_be_sure_to_check_each_event_s_rules_and_requirements_to_ensure_your_participation_and_prize_pool_don_t_worry_everything_is_explained_clearly_and_easy_to_understand)
+        eventsFourthTxt.text = getString(R.string.it_is_important_to_note_that_the_events_are_reset_every_day_at_21_00_et_that_means_you_ll_have_a_new_opportunity_to_participate_and_win_prizes_every_day_so_don_t_miss_the_chance_to_participate_and_increase_your_chances_of_winning)
+        eventsFifthTxt.text = getString(R.string.we_appreciate_being_part_of_our_community_and_we_are_excited_to_see_you_participate_in_our_daily_events_good_luck_and_have_fun)
 
         parentLayout = findViewById(R.id.background)
 
@@ -249,7 +255,7 @@ class SupportActivity : AppCompatActivity() {
 
     private fun createAccountSectionUI() {
         val accountHelpContext : Context = this@SupportActivity
-        screenTitle.text = "Conta"
+        screenTitle.text = getString(R.string.account)
         val changePassOptionText = TextView(accountHelpContext)
         val backgroundImage = ImageView(accountHelpContext)
         val btnGoToHelpChangePass = ImageView(accountHelpContext)
@@ -264,17 +270,16 @@ class SupportActivity : AppCompatActivity() {
         backgroundImage.setImageResource(R.drawable.help_rectangle)
         btnGoToHelpChangePass.setImageResource(R.drawable.back_btn)
         btnGoToHelpChangePass.setOnClickListener {
-            createHowToChangePassUI()
+
         }
 
-        changePassOptionText.text = "Como mudar minha senha"
+        changePassOptionText.text = getString(R.string.how_to_change_your_password)
 
         parentLayout = findViewById(R.id.background)
-        parentLayout1 = findViewById(R.id.background)
 
         parentLayout.addView(backgroundImage)
-        parentLayout1.addView(changePassOptionText)
-        parentLayout1.addView(btnGoToHelpChangePass)
+        parentLayout.addView(changePassOptionText)
+        parentLayout.addView(btnGoToHelpChangePass)
 
         val setBackG = ConstraintSet()
         setBackG.constrainWidth(backgroundImage.id, ConstraintSet.MATCH_CONSTRAINT)
@@ -297,17 +302,14 @@ class SupportActivity : AppCompatActivity() {
         constraintSet.connect(changePassOptionText.id, ConstraintSet.START, backgroundImage.id, ConstraintSet.START, 24)
         constraintSet.connect(changePassOptionText.id, ConstraintSet.BOTTOM, backgroundImage.id, ConstraintSet.BOTTOM)
 
-        constraintSet.applyTo(parentLayout1)
-    }
-
-    private fun createHowToChangePassUI() {
-        TODO("Not yet implemented")
+        constraintSet.applyTo(parentLayout)
     }
 
     private fun createCommonQuestionsUI() {
             val commonQuestionContext : Context = this@SupportActivity
-            screenTitle.text = "Common Questions"
-            val firstCQFrameTitle = TextView(commonQuestionContext)
+            screenTitle.text = getString(R.string.common_questions)
+            var boolean: Boolean
+        val firstCQFrameTitle = TextView(commonQuestionContext)
             val firstCQFrame = ImageView(commonQuestionContext)
             val firstCQButton = ImageView(commonQuestionContext)
             val secondCQFrameTitle = TextView(commonQuestionContext)
@@ -343,7 +345,155 @@ class SupportActivity : AppCompatActivity() {
             secondCQButton.setImageResource(R.drawable.back_btn)
             thirdCQButton.setImageResource(R.drawable.back_btn)
             firstCQButton.setOnClickListener {
-                createHowToChangePassUI()
+                boolean = true
+                screenTitle.text = getString(R.string.how_to_change_your_password)
+                screenTitle.textSize = 16F
+                firstCQFrame.visibility = View.GONE
+                firstCQFrameTitle.visibility = View.GONE
+                firstCQButton.visibility = View.GONE
+                secondCQFrame.visibility = View.GONE
+                secondCQFrameTitle.visibility = View.GONE
+                secondCQButton.visibility = View.GONE
+                thirdCQFrame.visibility = View.GONE
+                thirdCQFrameTitle.visibility = View.GONE
+                thirdCQButton.visibility = View.GONE
+
+                val sectionText = TextView(commonQuestionContext)
+                val buttonGoToChangePassScreen = ImageView(commonQuestionContext)
+                val buttonGoToChangePassScreenTxt = TextView(commonQuestionContext)
+
+                sectionText.id = View.generateViewId()
+                buttonGoToChangePassScreen.id = View.generateViewId()
+                buttonGoToChangePassScreenTxt.id = View.generateViewId()
+
+                sectionText.textSize = 16F
+                sectionText.typeface = ResourcesCompat.getFont(
+                    this,
+                    R.font.inter_medium
+                )
+                sectionText.setTextColor(Color.WHITE)
+
+                buttonGoToChangePassScreenTxt.textSize = 20F
+                buttonGoToChangePassScreenTxt.typeface = ResourcesCompat.getFont(
+                    this,
+                    R.font.inter_bold
+                )
+                buttonGoToChangePassScreenTxt.setTextColor(Color.WHITE)
+
+                val sectionTextSB = StringBuilder()
+                sectionText.append(getString(R.string.to_change_your_password_you_can_follow_these_steps))
+                sectionText.append(getString(R.string._1_starting_from_the_main_screen_click_on_the_gear_symbol))
+                sectionText.append(getString(R.string._2_click_on_the_manage_account_option))
+                sectionText.append(getString(R.string._3_click_on_the_change_password_button))
+                sectionText.append(getString(R.string._4_and_then_just_provide_what_the_dialog_asks_for))
+                sectionText.append(getString(R.string.we_ll_leave_a_shortcut_below_we_hope_that_s_enough_if_you_need_help_you_can_contact_us_in_the_help_and_support_section))
+
+                val finalText = sectionTextSB.toString()
+                sectionText.text = finalText
+
+                buttonGoToChangePassScreen.setImageResource(R.drawable.help_rectangle)
+                buttonGoToChangePassScreenTxt.text = getString(R.string.go_to_change_password)
+
+                parentLayout = findViewById(R.id.background)
+
+                parentLayout.addView(sectionText)
+                parentLayout.addView(buttonGoToChangePassScreen)
+                parentLayout.addView(buttonGoToChangePassScreenTxt)
+
+                val addViewsToLayout = ConstraintSet()
+                addViewsToLayout.constrainWidth(sectionText.id, ConstraintSet.WRAP_CONTENT)
+                addViewsToLayout.constrainHeight(sectionText.id, ConstraintSet.WRAP_CONTENT)
+                addViewsToLayout.connect(
+                    sectionText.id,
+                    ConstraintSet.TOP,
+                    linearLayout.id,
+                    ConstraintSet.BOTTOM,
+                    24
+                )
+                addViewsToLayout.connect(
+                    sectionText.id,
+                    ConstraintSet.START,
+                    parentLayout.id,
+                    ConstraintSet.START
+                )
+                addViewsToLayout.connect(
+                    sectionText.id,
+                    ConstraintSet.END,
+                    parentLayout.id,
+                    ConstraintSet.END
+                )
+
+                addViewsToLayout.constrainWidth(buttonGoToChangePassScreen.id, ConstraintSet.WRAP_CONTENT)
+                addViewsToLayout.constrainHeight(buttonGoToChangePassScreen.id, ConstraintSet.WRAP_CONTENT)
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.BOTTOM,
+                    parentLayout.id,
+                    ConstraintSet.BOTTOM,
+                    48
+                )
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.START,
+                    parentLayout.id,
+                    ConstraintSet.START
+                )
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.END,
+                    parentLayout.id,
+                    ConstraintSet.END
+                )
+
+                addViewsToLayout.constrainWidth(buttonGoToChangePassScreenTxt.id, ConstraintSet.WRAP_CONTENT)
+                addViewsToLayout.constrainHeight(buttonGoToChangePassScreenTxt.id, ConstraintSet.WRAP_CONTENT)
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreenTxt.id,
+                    ConstraintSet.BOTTOM,
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.BOTTOM
+                )
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreenTxt.id,
+                    ConstraintSet.START,
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.START
+                )
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreenTxt.id,
+                    ConstraintSet.END,
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.END
+                )
+                addViewsToLayout.connect(
+                    buttonGoToChangePassScreenTxt.id,
+                    ConstraintSet.TOP,
+                    buttonGoToChangePassScreen.id,
+                    ConstraintSet.TOP
+                )
+                addViewsToLayout.applyTo(parentLayout)
+
+                backBtn.setOnClickListener {
+                    if (boolean) {
+                        boolean = false
+                        parentLayout.removeView(sectionText)
+                        screenTitle.text = getString(R.string.common_questions)
+                        screenTitle.textSize = 20F
+                        firstCQFrame.visibility = View.VISIBLE
+                        firstCQFrameTitle.visibility = View.VISIBLE
+                        firstCQButton.visibility = View.VISIBLE
+                        secondCQFrame.visibility = View.VISIBLE
+                        secondCQFrameTitle.visibility = View.VISIBLE
+                        secondCQButton.visibility = View.VISIBLE
+                        thirdCQFrame.visibility = View.VISIBLE
+                        thirdCQFrameTitle.visibility = View.VISIBLE
+                        thirdCQButton.visibility = View.VISIBLE
+                    } else {
+                        val intent = Intent(this, HelpSupportActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
             }
             secondCQButton.setOnClickListener {
 
@@ -352,24 +502,21 @@ class SupportActivity : AppCompatActivity() {
 
             }
 
-            firstCQFrameTitle.text = "Como solicitar meu dinheiro"
-            secondCQFrameTitle.text = "Como convidar um amigo"
-            thirdCQFrameTitle.text = "Como mudar minha senha"
+            firstCQFrameTitle.text = getString(R.string.how_to_exchange_stars_to_money)
+            secondCQFrameTitle.text = getString(R.string.how_to_invite_an_friend)
+            thirdCQFrameTitle.text = getString(R.string.how_long_does_it_take_for_the_money_to_arrive_in_my_bank_account)
 
             parentLayout = findViewById(R.id.background)
-            parentLayout1 = findViewById(R.id.background)
-            parentLayout2 = findViewById(R.id.background)
-            parentLayout3 = findViewById(R.id.background)
 
             parentLayout.addView(firstCQFrame)
             parentLayout.addView(secondCQFrame)
             parentLayout.addView(thirdCQFrame)
-            parentLayout1.addView(firstCQFrameTitle)
-            parentLayout1.addView(secondCQFrameTitle)
-            parentLayout1.addView(thirdCQFrameTitle)
-            parentLayout1.addView(firstCQButton)
-            parentLayout1.addView(secondCQButton)
-            parentLayout1.addView(thirdCQButton)
+            parentLayout.addView(firstCQFrameTitle)
+            parentLayout.addView(secondCQFrameTitle)
+            parentLayout.addView(thirdCQFrameTitle)
+            parentLayout.addView(firstCQButton)
+            parentLayout.addView(secondCQButton)
+            parentLayout.addView(thirdCQButton)
 
             val setBackG = ConstraintSet()
             setBackG.constrainWidth(firstCQFrame.id, ConstraintSet.MATCH_CONSTRAINT)
@@ -427,6 +574,6 @@ class SupportActivity : AppCompatActivity() {
             constraintSet.connect(thirdCQFrameTitle.id, ConstraintSet.TOP, thirdCQFrame.id, ConstraintSet.TOP)
             constraintSet.connect(thirdCQFrameTitle.id, ConstraintSet.START, thirdCQFrame.id, ConstraintSet.START, 24)
             constraintSet.connect(thirdCQFrameTitle.id, ConstraintSet.BOTTOM, thirdCQFrame.id, ConstraintSet.BOTTOM)
-            constraintSet.applyTo(parentLayout1)
+            constraintSet.applyTo(parentLayout)
         }
 }

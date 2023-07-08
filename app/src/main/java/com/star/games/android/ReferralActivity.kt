@@ -1,119 +1,185 @@
 package com.star.games.android
 
-import android.content.ContentValues.TAG
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.star.games.android.ErrorToastUtils.showCustomErrorToast
+import com.star.games.android.SuccessToastUtils.showCustomSuccessToast
 
 class ReferralActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
-    private lateinit var currentUser: FirebaseUser
-    private var userData = db.collection("USERS").document(currentUser.uid)
-    private var friendCodeDb = db.collection("USERS").document("codigoDoAmigo")
+    private lateinit var userCodeTxt: TextView
+    private lateinit var invitedFriendsCounterTxt: TextView
+    private lateinit var screenName: TextView
+
+    private lateinit var backBtn: ImageView
+    private lateinit var copyCodeBtn: ImageView
+    private lateinit var shareCodeBtn: ImageView
+    private lateinit var helpBtn: ImageView
+
+    private var userCodeString: String = "null"
+
+    private var userInvitedFriendsCount: Int = 0
+
+    private val user  = FirebaseAuth.getInstance().currentUser
+    private val db = Firebase.firestore
+    private val uid = user!!.uid
+    private val userData = db.collection("USERS").document(uid)
+
+    private lateinit var loadingDialog: LoadingDialog
+    private lateinit var rulesDialog: RulesDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_referral)
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
-        currentUser = auth.currentUser!!
-        val userCodeTxt : TextView = findViewById(R.id.user_code)
+        initializeViews()
+        fetchUserData()
+        setViewsListeners()
+        onBackPressedListener()
+        textsUI()
+    }
 
+    private fun initializeViews() {
+        loadingDialog = LoadingDialog(this)
+        loadingDialog.show()
+        rulesDialog = RulesDialog(this)
+        userCodeTxt = findViewById(R.id.user_code)
+        backBtn = findViewById(R.id.back_btn)
+        copyCodeBtn = findViewById(R.id.copy_code)
+        shareCodeBtn = findViewById(R.id.share_code)
+        screenName = findViewById(R.id.event_name)
+        helpBtn = findViewById(R.id.help_icon)
+        invitedFriendsCounterTxt = findViewById(R.id.invited_friends_counter_txt)
+    }
 
-        val backBtn : ImageView = findViewById(R.id.back_btn)
+    private fun fetchUserData() {
+        userData
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                documentSnapshot
+                    .getString("myCode")
+                    .let { myCode ->
+                        userCodeString = myCode.toString()
+                        updateUI()
+                    }
+                documentSnapshot
+                    .getLong("invitedFriends")
+                    .let { friendsInvited ->
+                        userInvitedFriendsCount = friendsInvited!!.toInt()
+                        updateUI()
+                    }
+                loadingDialog.hide()
+            }
+            .addOnFailureListener { exception ->
+                showCustomErrorToast(
+                    this,
+                    getString(R.string.error_, exception.message.toString()),
+                    Toast.LENGTH_LONG,
+                    this.window
+                )
+                loadingDialog.hide()
+            }
+    }
+
+    private fun updateUI() {
+        userCodeTxt.text = userCodeString
+        invitedFriendsCounterTxt.text = getString(R.string.invited_friends_, userInvitedFriendsCount)
+    }
+
+    private fun setViewsListeners() {
         backBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        val codeEditText : EditText = findViewById(R.id.editText)
-        val addReff : LinearLayout = findViewById(R.id.add_referral_btn)
-        val useCoins : LinearLayout = findViewById(R.id.claim_btn)
-        useCoins.setOnClickListener {
-            val spendedCoins = 50
-            addCoins(spendedCoins)
+        copyCodeBtn.setOnClickListener {
+            copyTextToClipboard(userCodeTxt, this)
+
+            showCustomSuccessToast(
+                this,
+                getString(R.string.code_successfully_copied_to_your_clipboard),
+                Toast.LENGTH_LONG,
+                this.window
+            )
         }
-       /* addReff.setOnClickListener {
-            // Obter o código de referência inserido pelo usuário
-            val referralCode = codeEditText.text.toString()
 
-            // Verificar se o código é diferente do código do usuário atual
-            if (referralCode != userReferralCode) {
-                // Adicionar o ponto no documento do Firestore do usuário indicado
-                addPointToReferral(referralCode)
-            } else {
-                // Mostrar mensagem de erro ao usuário
-                Toast.makeText(this, "Você não pode usar o seu próprio código de referência", Toast.LENGTH_SHORT).show()
-            }
-        }*/
-
-    }
-
-    private fun addCoins(coins: Int) {
-            userData.update("coins", coins).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    //Envia 20% dos coins gastos para a conta do amigo que convidou o usuário
-                    val friendCode = intent.getStringExtra("codigo_do_amigo")
-                    if (friendCode != null) {
-                        friendCodeDb.get().addOnSuccessListener { document ->
-                            val coinsDoAmigo = document.getLong("coins")?.toInt() ?: 0
-                            val coinsParaAmigo = (coins * 0.2).toInt()
-                            friendCodeDb.update("coins", (coinsDoAmigo + coinsParaAmigo).toLong())
-                        }
-                    }
-                }
-            }
-    }
-
-    // Obter o código de referência do usuário a partir do seu UID
-    private fun getUserReferralCode() {
-
-    }
-
-    // Adicionar um ponto no documento do Firestore do usuário indicado
-    private fun addPointToReferral(referralCode: String) {
-        // Obter a referência do documento do usuário indicado
-        val referralDocRef = db.collection("USERS").whereEqualTo("referral", referralCode).get()
-
-        referralDocRef.addOnSuccessListener { documents ->
-            if (documents.documents.isNotEmpty()) {
-                // Obter o documento do usuário indicado
-                val referralDoc = documents.documents[0]
-
-                // Obter o número de pontos do usuário indicado
-                var points = referralDoc.getLong("points") ?: 0
-
-                // Adicionar um ponto
-                points++
-
-                // Atualizar o número de pontos no documento do usuário indicado
-                referralDoc.reference.update("points", points)
-                    .addOnSuccessListener {
-                        // Mostrar mensagem de sucesso ao usuário
-                        Toast.makeText(this, "1 ponto adicionado com sucesso", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener { e ->
-                        // Mostrar mensagem de erro ao usuário
-                        Toast.makeText(this, "Erro ao adicionar ponto: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-            } else {
-                // Mostrar mensagem de erro ao usuário
-                Toast.makeText(this, "Código de referência inválido", Toast.LENGTH_SHORT).show()
-            }
+        shareCodeBtn.setOnClickListener {
+            val textToShare = getString(R.string.share_code_string, userCodeString, userCodeString)
+            createShareText(textToShare, this)
         }
+
+        helpBtn.setOnClickListener {
+            val list: List<String> = listOf(
+               getString(R.string.share_your_unique_invite_code_with_your_friends),
+                getString(R.string.when_a_friend_signs_up_),
+                getString(R.string.each_time_that_friend_spends_stars_in_the_app_you_ll_receive_25_of_the_stars_they_spend_as_a_reward),
+                getString(R.string.the_stars_you_earn_can_be_used_to_unlock_amazing_in_app_rewards)
+            )
+            rulesDialog.showEventRulesDialog(list)
+        }
+    }
+
+    private fun createShareText(text: String, context: Context) {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text)
+        context.startActivity(Intent.createChooser(shareIntent, "Share via"))
+    }
+
+    private fun copyTextToClipboard(textView: TextView, context: Context) {
+        val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = android.content.ClipData.newPlainText("Text", textView.text)
+        clipboardManager.setPrimaryClip(clipData)
+    }
+
+    private fun onBackPressedListener() {
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val backToHomeIntent = Intent(
+                    this@ReferralActivity,
+                    HomeActivity::class.java
+                )
+                startActivity(backToHomeIntent)
+                this@ReferralActivity.finish()
+            }
+        })
+    }
+
+    private fun textsUI() {
+        val screenNameShader: Shader = LinearGradient(
+            0f, 8f, 0f, screenName.textSize,
+            intArrayOf(
+                Color.parseColor("#CED2FD"),
+                Color.parseColor("#767B9B")
+            ),
+            null,
+            Shader.TileMode.MIRROR
+        )
+        screenName.paint.shader = screenNameShader
+
+        val userCodeShader: Shader = LinearGradient(
+            0f, 12f, 0f, userCodeTxt.textSize,
+            intArrayOf(
+                Color.parseColor("#92723B"),
+                Color.parseColor("#453714")
+            ),
+            null,
+            Shader.TileMode.MIRROR
+        )
+        userCodeTxt.paint.shader = userCodeShader
     }
 }

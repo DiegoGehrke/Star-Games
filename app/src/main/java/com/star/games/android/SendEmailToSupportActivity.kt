@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.star.games.android
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.LinearGradient
@@ -9,13 +12,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 
 class SendEmailToSupportActivity : AppCompatActivity() {
 
@@ -37,23 +39,10 @@ class SendEmailToSupportActivity : AppCompatActivity() {
         val messageMaxChars = 1000
 
         backBtn.setOnClickListener {
-            val intent = Intent(this, HelpSupportActivity::class.java)
+            val intent = Intent(this, ConfigurationsActivity::class.java)
             startActivity(intent)
             finish()
         }
-
-        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
-
-        val sharedPreferences = EncryptedSharedPreferences.create(
-            "secretEmail",
-            masterKeyAlias,
-            applicationContext,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
-        sharedPreferences.edit().putString("theEmail", "minecraftpirata000@gmail.com").apply()
-
 
         subjectText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -68,7 +57,7 @@ class SendEmailToSupportActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                val subjectRemainingChars = subjectMaxChars - s?.length!! ?: 0
+                val subjectRemainingChars = subjectMaxChars - s?.length!!
                 subjectRemainingCharsCounter.text = "$subjectRemainingChars Remaining Characters"
             }
         })
@@ -97,7 +86,7 @@ class SendEmailToSupportActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                val messageRemainingChars = messageMaxChars - s?.length!! ?: 0
+                val messageRemainingChars = messageMaxChars - s?.length!!
                 messageRemainingCharsCounter.text = "$messageRemainingChars Remaining Characters"
             }
         })
@@ -115,23 +104,28 @@ class SendEmailToSupportActivity : AppCompatActivity() {
 
         sendEmail.visibility = View.GONE
         sendEmail.setOnClickListener {
-            val getEmail = sharedPreferences.getString("theEmail", null)
-
-            val intent = Intent(Intent.ACTION_SENDTO).apply {
+            val recipient = arrayOf("nennoapps@protonmail.com")
+            val intente: Intent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
-                putExtra(Intent.EXTRA_EMAIL, arrayOf(getEmail.toString()))
-                putExtra(Intent.EXTRA_SUBJECT, subjectText.toString())
-                putExtra(Intent.EXTRA_TEXT, messageText.toString())
+                putExtra(Intent.EXTRA_EMAIL, recipient)
+                putExtra(Intent.EXTRA_SUBJECT, subjectText.text.toString())
+                putExtra(Intent.EXTRA_TEXT, messageText.text.toString())
             }
 
             if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
+                startActivity(Intent.createChooser(intente, getString(R.string.select_an_e_mail_app)))
             }
         }
 
         background.setOnClickListener {
             subjectText.clearFocus()
             messageText.clearFocus()
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            if (imm.isAcceptingText) {
+                imm.hideSoftInputFromWindow(subjectText.windowToken, 0)
+                imm.hideSoftInputFromWindow(messageText.windowToken, 0)
+            }
+
         }
 
         textUI()

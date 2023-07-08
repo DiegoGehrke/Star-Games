@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-        android:autofillHints="" />
+        android:autofillHints="firstName" />
 
     <EditText
         android:id="@+id/last_name"
@@ -72,29 +72,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_name"
         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-        android:autofillHints="" />
+        android:autofillHints="lastName" />
 
 
-    <LinearLayout
+    <ImageView
         android:id="@+id/save_changes_btn"
         android:layout_width="288dp"
         android:layout_height="72dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/new_button_design"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:src="@drawable/new_button_design"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/last_name">
+    </ImageView>
 
-        <TextView
-            android:id="@+id/save_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:fontFamily="@font/inter_extrabold"
-            android:textSize="20sp" />
-    </LinearLayout>
+    <TextView
+    android:id="@+id/save_txt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="@string/save"
+    android:textColor="#656565"
+    android:fontFamily="@font/inter_extrabold"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="@id/save_changes_btn"
+    app:layout_constraintStart_toStartOf="@id/save_changes_btn"
+    app:layout_constraintTop_toTopOf="@+id/save_changes_btn"
+    app:layout_constraintBottom_toBottomOf="@+id/save_changes_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

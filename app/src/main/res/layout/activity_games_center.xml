@@ -14,12 +14,9 @@
         android:background="@drawable/gradient_toolbar"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/back_btn"
@@ -28,14 +25,14 @@
             android:src="@drawable/big_back_btn" />
 
         <TextView
-            android:id="@+id/event_name"
+            android:id="@+id/main_games_activity_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/inter_black"
             android:text="@string/main_games"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ImageView
@@ -43,13 +40,13 @@
         android:layout_width="match_parent"
         android:layout_height="124dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/choose_event_frame"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/choose_event_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/help_icon" />
 
     <ImageView
         android:id="@+id/first_game_icon"
@@ -68,7 +65,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/memory_game"
-        android:textColor="#B3BED4"
+        android:textColor="#C7D3EB"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/first_game"
         app:layout_constraintStart_toStartOf="@+id/first_game"
@@ -76,16 +73,18 @@
 
     <TextView
         android:id="@+id/first_game_desc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/inter_medium"
         android:gravity="center"
         android:text="@string/memory_game_desc"
         android:textColor="#A0AEC9"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/first_game"
-        app:layout_constraintStart_toStartOf="@+id/first_game"
+        app:layout_constraintEnd_toStartOf="@+id/go_to_memory_game_btn"
+        app:layout_constraintStart_toEndOf="@+id/first_game_icon"
         app:layout_constraintTop_toBottomOf="@+id/first_game_name" />
 
     <ImageView
@@ -105,7 +104,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/choose_event_frame"
+        android:background="@drawable/choose_event_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +115,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="-32dp"
-        android:background="@drawable/memory_game_icon"
+        android:background="@drawable/math_game_icon"
         app:layout_constraintBottom_toBottomOf="@+id/second_game"
         app:layout_constraintStart_toStartOf="@+id/second_game"
         app:layout_constraintTop_toTopOf="@+id/second_game" />
@@ -127,8 +126,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/inter_black"
-        android:text="MATH GAME"
-        android:textColor="#B3BED4"
+        android:text="@string/math_game"
+        android:textColor="#C7D3EB"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/second_game"
         app:layout_constraintStart_toStartOf="@+id/second_game"
@@ -136,16 +135,18 @@
 
     <TextView
         android:id="@+id/second_game_desc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/inter_medium"
         android:gravity="center"
-        android:text="@string/memory_game_desc"
+        android:text="@string/solve_math_operations_in_n_a_short_period_of_time"
         android:textColor="#A0AEC9"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/second_game_name"
-        app:layout_constraintStart_toStartOf="@+id/second_game_name"
+        app:layout_constraintEnd_toStartOf="@+id/go_to_math_game_btn"
+        app:layout_constraintStart_toEndOf="@+id/second_game_icon"
         app:layout_constraintTop_toBottomOf="@+id/second_game_name" />
 
     <ImageView
@@ -166,7 +167,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/choose_event_frame"
+        android:background="@drawable/choose_event_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +178,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="-32dp"
-        android:background="@drawable/memory_game_icon"
+        android:background="@drawable/quiz_game_icon"
         app:layout_constraintBottom_toBottomOf="@+id/third_game"
         app:layout_constraintStart_toStartOf="@+id/third_game"
         app:layout_constraintTop_toTopOf="@+id/third_game" />
@@ -188,8 +189,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/inter_black"
-        android:text="MATH GAME"
-        android:textColor="#B3BED4"
+        android:text="@string/quiz_game"
+        android:textColor="#C7D3EB"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/third_game"
         app:layout_constraintStart_toStartOf="@+id/third_game"
@@ -197,20 +198,22 @@
 
     <TextView
         android:id="@+id/third_game_desc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/inter_medium"
         android:gravity="center"
-        android:text="@string/memory_game_desc"
+        android:text="@string/test_your_general_knowledge_n_by_answering_questions"
         android:textColor="#A0AEC9"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/third_game_name"
-        app:layout_constraintStart_toStartOf="@+id/third_game_name"
+        app:layout_constraintEnd_toStartOf="@+id/go_to_quiz_game_btn"
+        app:layout_constraintStart_toEndOf="@+id/third_game_icon"
         app:layout_constraintTop_toBottomOf="@+id/third_game_name" />
 
     <ImageView
-        android:id="@+id/go_to_numeric_repetition_btn"
+        android:id="@+id/go_to_quiz_game_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="12dp"
@@ -219,4 +222,13 @@
         app:layout_constraintEnd_toEndOf="@+id/third_game"
         app:layout_constraintTop_toTopOf="@+id/third_game" />
 
+    <ImageView
+            android:id="@+id/help_icon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/help_icon"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".MemoryGameActivity">
+    tools:context=".MemoryGameActivity"
+    android:id="@+id/constraint_bckg">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -56,11 +57,11 @@
         android:id="@+id/timerProgress2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="288dp"
-        android:layout_height="8dp"
+        android:layout_height="12dp"
         android:layout_marginTop="12dp"
         android:indeterminate="false"
-        android:max="60"
-        android:progress="60"
+        android:max="45"
+        android:progress="45"
         android:progressDrawable="@drawable/custom_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,4 +171,5 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toEndOf="@+id/card7"
         app:layout_constraintTop_toBottomOf="@+id/card4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

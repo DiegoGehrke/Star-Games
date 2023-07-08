@@ -4,16 +4,14 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.LinearGradient
-import android.graphics.Rect
 import android.graphics.Shader
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 
-class CustomDialogRewardDetail(private var context : Context) {
-    private lateinit  var rewardDetailDialog: Dialog
+class CustomDialogRewardDetail(private val context : Context) {
+    private lateinit var rewardDetailDialog: Dialog
     private lateinit var closeBtn: ImageView
     private lateinit var dialogTitle: TextView
     private lateinit var itemImage : ImageView
@@ -48,10 +46,10 @@ class CustomDialogRewardDetail(private var context : Context) {
 
     private fun textUI() {
         val textShader: Shader = LinearGradient(
-            0f, 0f, 0f, dialogTitle.textSize, // Change the ending y-coordinate to be textSize
+            0f, 0f, 0f, dialogTitle.textSize,
             intArrayOf(
-                Color.parseColor("#FFEAA9"), // First color
-                Color.parseColor("#4E3B00") // Second color
+                Color.parseColor("#FFEC8A"),
+                Color.parseColor("#998100")
             ),
             null,
             Shader.TileMode.MIRROR

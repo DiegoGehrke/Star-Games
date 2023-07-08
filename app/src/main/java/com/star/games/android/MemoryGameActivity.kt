@@ -2,8 +2,6 @@ package com.star.games.android
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.LinearGradient
@@ -11,131 +9,155 @@ import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import android.util.TypedValue
-import android.view.View
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.getField
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.ironsource.mediationsdk.ISBannerSize
+import com.ironsource.mediationsdk.IronSource
+import com.ironsource.mediationsdk.IronSourceBannerLayout
+import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
+import com.ironsource.mediationsdk.logger.IronSourceError
+import com.ironsource.mediationsdk.sdk.LevelPlayBannerListener
+import com.star.games.android.ErrorToastUtils.showCustomErrorToast
+import com.star.games.android.SuccessToastUtils.showCustomSuccessToast
 import java.util.*
-import kotlin.properties.Delegates
+import kotlin.math.roundToInt
+import kotlin.random.Random
 
 class MemoryGameActivity : AppCompatActivity() {
 
-    private var card1: ImageView? = null
-    private var card2: ImageView? = null
-    private var card3: ImageView? = null
-    private var card4: ImageView? = null
-    private var card5: ImageView? = null
-    private var card6: ImageView? = null
-    private var card7: ImageView? = null
-    private var card8: ImageView? = null
-    private val _timer = Timer()
-    private var timer1: TimerTask? = null
-    private var timertxt: TextView? = null
-    private var progress = 120
+    private lateinit var card1 :  ImageView
+    private lateinit var card2 : ImageView
+    private lateinit var card3 : ImageView
+    private lateinit var card4 : ImageView
+    private lateinit var card5 : ImageView
+    private lateinit var card6 : ImageView
+    private lateinit var card7 : ImageView
+    private lateinit var card8 : ImageView
+    private lateinit var backBtn : ImageView
+
+    private val _timer : Timer = Timer()
+    private var timer : Timer = Timer()
+    private val backTimer = Timer()
+    private lateinit var timer1 : TimerTask
+    private lateinit var ttaskk : TimerTask
+
+    private lateinit var timerTxt : TextView
     private lateinit var gameName : TextView
-    lateinit var timerProgress: ProgressBar
-    private var ttaskk: TimerTask? = null
-    private val timer = Timer()
-    private var genRanNum = 0.0
-    private var click = 0.0
-    private var genPos = 0.0
-    private var genCardType = 0.0
-    private var gamePhase : String = "1/6"
-    lateinit var cardType : String
-    private var gameStart = false
+    private lateinit var phaseTxt : TextView
+
+    private var progress : Int = 45
+    private var confirmBackInt : Int = 0
+    private var confirmBackWithBtnInt : Int = 0
+    private var genRanNum: Double = 0.0
+    private var click : Double = 0.0
+    private var genPos : Double = 0.0
+    private var genCardType : Double = 0.0
+    private var vipLevel : Int = 0
+    private var getUserVipPoints : Long = 0
+    private var collectStarsProgress : Int = 0
+    private var coin : Float = 0.00F
+    private var bonusAmount: Float = 0F
+    private var savedProgress = 0
+
+    private lateinit var timerProgress: ProgressBar
+
+    private var gamePhase : String = "1/1"
+    private lateinit var cardType : String
+
     private var map = HashMap<String, Any>()
     private var cardVarMap = HashMap<String?, Any>()
     private var clickedCard = ArrayList<String>()
     private val matchedCardList = ArrayList<String>()
     private val genCardList = ArrayList<String?>()
-    private var total = 0.0
-    private var boolPhase1 : Boolean = true
-    private var boolPhase2 : Boolean = false
-    private var boolPhase3 : Boolean = false
-    private var boolPhase4 : Boolean = false
-    private var boolPhase5 : Boolean = false
-    private var boolPhase6 : Boolean = false
-    private var confirmBackInt : Int = 0
-    private var confirmBackWithBtnInt : Int = 0
-    private lateinit var backBtn : ImageView
-    private val backTimer = Timer()
-    lateinit var phaseTxt : TextView
+
+    private var areInFirstPhase : Boolean = false
+    private var areInSecondPhase : Boolean = false
+    private var areInThirdPhase : Boolean = false
+    private var areInFourthPhase : Boolean = false
+    private var areInFifthPhase : Boolean = false
+    private var areInSixthPhase : Boolean = false
+    private var isFirstPhaseDone : Boolean = false
+    private var isSecondPhaseDone : Boolean = false
+    private var isThirdPhaseDone : Boolean = false
+    private var isFourthPhaseDone : Boolean = false
+    private var isFifthPhaseDone : Boolean = false
+    private var isSixthPhaseDone : Boolean = false
+    private var getIntentExtraValue : Boolean = false
+    private var gameStart = false
+    private var isTimerRunning = false
+
     private val db = FirebaseFirestore.getInstance()
     private val user = FirebaseAuth.getInstance().currentUser
-    private val uid = user?.uid
-    private val dailyEvent = db.collection("DAILY_EVENT").document(uid!!)
-    private var collectStarsProgress by Delegates.notNull<Int>()
-    var coin by Delegates.notNull<Long>()
+    private val uid = user!!.uid
+    private val dailyEvent = db.collection("DAILY_EVENT").document(uid)
+    private val userData = db.collection("USERS").document(uid)
+
+    private lateinit var banner: IronSourceBannerLayout
+
+    private lateinit var constraintLayout: ConstraintLayout
+
+    private lateinit var loadingDialog: LoadingDialog
+
+    private lateinit var firebaseRemoteConfig: FirebaseRemoteConfig
+    private lateinit var configSettings: FirebaseRemoteConfigSettings
+
+    private var memoryHighestReward: Float = 12.00f
+    private var memoryLowestReward: Float = 8.00f
+
+    private lateinit var mapDefaultValues: HashMap<String, Any>
+
+    private lateinit var playerBackgroundSound: ExoPlayer
+    private lateinit var backgroundMediaItem: MediaItem
+    private lateinit var playerFlipCardAnswer: ExoPlayer
+    private lateinit var playerFlipMediaItem: MediaItem
+    private lateinit var playerMatchCards: ExoPlayer
+    private lateinit var matchCardsMediaItem: MediaItem
+
+    private lateinit var countdownDialog: CountdownDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory_game)
-       val backToGamesCenterActivity = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
-        gameName = findViewById(R.id.game_name)
-        val textShader: Shader = LinearGradient(
-            0f, 24f, 0f, gameName.textSize, // Change the ending y-coordinate to be textSize
-            intArrayOf(
-                Color.parseColor("#CED2FD"), // First color
-                Color.parseColor("#767B9B") // Second color
-            ),
-            null,
-            Shader.TileMode.MIRROR
-        )
-        gameName.paint.shader = textShader
 
-        dailyEvent.get().addOnSuccessListener { document ->
-            if (document.exists()) {
-                if (document.contains("collectStarsQuest")) {
-                    // O campo já existe, atualiza o valor
-                    val getCollectStarsProgress = document.getLong("collectStarsQuest") ?: 0
-                    collectStarsProgress = getCollectStarsProgress.toInt()
-                    //dailyEvent.update("collectStarsQuest", currentProgress + 1)
-                } else {
-                    // O campo não existe, cria com o valor inicial 1
-                    dailyEvent.update("collectStarsQuest", 0)
-                        .addOnSuccessListener {
-                            dailyEvent.addSnapshotListener { snapshot, e ->
-                                if (e != null) {
-                                    // ocorreu um erro ao receber a atualização
-                                    return@addSnapshotListener
-                                }
-                                if (snapshot != null && snapshot.exists()) {
-                                    val map = snapshot.data
-                                    val collectedStars = map?.get("collectStarsQuest") as Long
-                                    collectStarsProgress = collectedStars.toInt()
-                                }
-                            }
-                        }
-                }
-            } else {
-                // O documento não existe, cria com o campo e valor inicial 1
-                val addData = hashMapOf(
-                    "collectStarsQuest" to 0
-                )
-                dailyEvent.set(addData)
-                    .addOnSuccessListener {
-                        dailyEvent.addSnapshotListener { snapshot, e ->
-                            if (e != null) {
-                                // ocorreu um erro ao receber a atualização
-                                return@addSnapshotListener
-                            }
-                            if (snapshot != null && snapshot.exists()) {
-                                val map = snapshot.data
-                                val collectedStars = map?.get("collectStarsQuest") as Long
-                                collectStarsProgress = collectedStars.toInt()
-                            }
-                        }
-                    }
+        fetchUserData()
+        initializeViews()
+        setOnClickListeners()
+        initializeBannerAd()
+        gradientTextEffect()
+        setCharacter()
+        levelGenerator()
 
-            }
-        }.addOnFailureListener { exception ->
-            Log.e("Firestore", "Erro ao checar/atualizar/criar o campo collectStarsQuest", exception)
+        getIntentExtraValue = if (intent != null && intent.extras != null) {
+            val getExtras: Bundle = intent.extras!!
+            getExtras.containsKey("noHaveTicketsOrChances")
+        } else {
+            false
         }
+    }
 
+    private fun setCharacter() {
+        val randomNumber = Random.nextInt(1, 7)
+        areInFirstPhase = randomNumber == 1
+        areInSecondPhase = randomNumber == 2
+        areInThirdPhase = randomNumber == 3
+        areInFourthPhase = randomNumber == 4
+        areInFifthPhase = randomNumber == 5
+        areInSixthPhase = randomNumber == 6
+    }
+
+    private fun initializeViews() {
+        constraintLayout = findViewById(R.id.constraint_bckg)
+        gameName = findViewById(R.id.game_name)
         card1 = findViewById(R.id.card1)
         card2 = findViewById(R.id.card2)
         card3 = findViewById(R.id.card3)
@@ -144,18 +166,206 @@ class MemoryGameActivity : AppCompatActivity() {
         card6 = findViewById(R.id.card6)
         card7 = findViewById(R.id.card7)
         card8 = findViewById(R.id.card8)
-        timertxt = findViewById(R.id.textView7)
+        timerTxt = findViewById(R.id.textView7)
         timerProgress = findViewById(R.id.timerProgress2)
         backBtn = findViewById(R.id.back_btn)
+        phaseTxt = findViewById(R.id.phaseCounter)
+        phaseTxt.text = getString(R.string.phase, gamePhase)
+        loadingDialog = LoadingDialog(this@MemoryGameActivity)
 
+        firebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+        configSettings = FirebaseRemoteConfigSettings
+            .Builder()
+            .setMinimumFetchIntervalInSeconds(1)
+            .build()
+        firebaseRemoteConfig.setConfigSettingsAsync(configSettings)
+        mapDefaultValues = HashMap()
+        mapDefaultValues["MEMORY_HIGHEST_REWARD"] = memoryHighestReward
+        mapDefaultValues["MEMORY_LOWEST_REWARD"] = memoryLowestReward
+        firebaseRemoteConfig.setDefaultsAsync(mapDefaultValues)
+        firebaseRemoteConfig.fetchAndActivate()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    memoryHighestReward = firebaseRemoteConfig.getDouble("MEMORY_HIGHEST_REWARD").toFloat()
+                    memoryLowestReward = firebaseRemoteConfig.getDouble("MEMORY_LOWEST_REWARD").toFloat()
+                } else {
+                    showCustomErrorToast(
+                        this,
+                        task.exception!!.message.toString(),
+                        Toast.LENGTH_LONG,
+                        this.window
+                    )
+                }
+            }
+
+        //background sound
+        playerBackgroundSound = ExoPlayer.Builder(this).build()
+        /*playerBackgroundSound.addListener(object : Player.Listener {
+            override fun onPlaybackStateChanged(@Player.State state: Int) {
+                when (state) {
+                    Player.STATE_READY -> {
+                       loadingDialog.hide()
+                        // The player is able to immediately play from its current position. The player will be playing if getPlayWhenReady() is true, and paused otherwise.
+                    }
+                    Player.STATE_BUFFERING -> {
+                        loadingDialog.show()
+                    }
+                    Player.STATE_IDLE -> {
+                        // The player is idle, meaning it holds only limited resources.The player must be prepared before it will play the media.
+                    }
+                    Player.STATE_ENDED -> {
+                        // The player has finished playing the media.
+                    }
+                    else -> {
+                        // Other things
+                    }
+                }
+            }
+        })*/
+        backgroundMediaItem = MediaItem.fromUri(
+                "https://drive.google.com/uc?id=1V6KN5gz0kOIFz8LSKcAxqCQ5omFhaQT2"
+        )
+        playerBackgroundSound.setMediaItem(backgroundMediaItem)
+        playerBackgroundSound.repeatMode = Player.REPEAT_MODE_ONE
+        playerBackgroundSound.prepare()
+        playerBackgroundSound.play()
+
+        //flip sound
+        playerFlipCardAnswer = ExoPlayer.Builder(this).build()
+        playerFlipMediaItem = MediaItem.fromUri(
+            "android.resource://$packageName/${R.raw.card_flip_another_sound}"
+        )
+        playerFlipCardAnswer.setMediaItem(playerFlipMediaItem)
+        playerFlipCardAnswer.prepare()
+
+        //match sound
+        playerMatchCards = ExoPlayer.Builder(this).build()
+        matchCardsMediaItem = MediaItem.fromUri(
+            "android.resource://$packageName/${R.raw.correct_answer_sound}"
+        )
+        playerMatchCards.setMediaItem(matchCardsMediaItem)
+        playerMatchCards.prepare()
+
+        countdownDialog = CountdownDialog(this)
+        countdownDialog.countdownShow()
+    }
+
+    private fun fetchUserData() {
+        dailyEvent
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    if (document.contains("collectedStars")) {
+                        val getCollectStarsProgress = document.getLong("collectedStars") ?: 0
+                        collectStarsProgress = getCollectStarsProgress.toInt()
+                    } else {
+                        dailyEvent.update("collectedStars", 0)
+                            .addOnSuccessListener {
+                                dailyEvent.addSnapshotListener { snapshot, e ->
+                                    if (e != null) {
+                                        return@addSnapshotListener
+                                    }
+                                    if (snapshot != null && snapshot.exists()) {
+                                        val map = snapshot.data
+                                        val collectedStars = map?.get("collectedStars") as Long
+                                        collectStarsProgress = collectedStars.toInt()
+                                    }
+                                }
+                            }
+                    }
+                } else {
+                    val addData: HashMap<String, Any> = hashMapOf(
+                        "collectedStars" to 0
+                    )
+                    dailyEvent.set(addData)
+                        .addOnSuccessListener {
+                            dailyEvent.addSnapshotListener { snapshot, e ->
+                                if (e != null) {
+                                    return@addSnapshotListener
+                                }
+                                if (snapshot != null && snapshot.exists()) {
+                                    val map: Map<String, Any> = snapshot.data!!
+                                    val collectedStars: Long = map["collectedStars"] as Long
+                                    collectStarsProgress = collectedStars.toInt()
+                                }
+                            }
+                        }
+
+                }
+            }
+            .addOnFailureListener { exception ->
+                showCustomErrorToast(
+                    this,
+                    exception.message.toString(),
+                    Toast.LENGTH_LONG,
+                    this.window
+                )
+            }
+
+        userData
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    coin = document.getField("coins")!!
+                    getUserVipPoints = document.getLong("vipPoints") ?: 0
+                    vipLevel = calculateVipLevel(getUserVipPoints)
+                }
+            }
+            .addOnFailureListener { exception ->
+                showCustomErrorToast(
+                    this,
+                    exception.message.toString(),
+                    Toast.LENGTH_LONG,
+                    this.window
+                )
+            }
+    }
+
+    private fun initializeBannerAd() {
+        banner = IronSource.createBanner(this@MemoryGameActivity, ISBannerSize.BANNER)!!
+        banner = IronSource.createBanner(this@MemoryGameActivity, ISBannerSize.BANNER)!!
+
+        banner.levelPlayBannerListener = object : LevelPlayBannerListener {
+            override fun onAdLoaded(adInfo: AdInfo) {}
+
+            override fun onAdLoadFailed(error: IronSourceError) {}
+
+            override fun onAdClicked(adInfo: AdInfo) {}
+
+            override fun onAdScreenPresented(adInfo: AdInfo) {}
+
+            override fun onAdScreenDismissed(adInfo: AdInfo) {}
+
+            override fun onAdLeftApplication(adInfo: AdInfo) {}
+        }
+        val layoutParams = ConstraintLayout.LayoutParams(
+            ConstraintLayout.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+        banner.layoutParams = layoutParams
+
+        val constraintLayout = findViewById<ConstraintLayout>(R.id.constraint_bckg)
+        constraintLayout.addView(banner)
+        IronSource.loadBanner(banner)
+    }
+
+    private fun setOnClickListeners() {
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 confirmBackInt ++
                 if (confirmBackInt == 1){
-                    Toast.makeText(applicationContext, "Clique novamente para desistir", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.click_again_to_give_up),
+                        Toast.LENGTH_LONG)
+                        .show()
                 }
                 else if (confirmBackInt > 1){
-                    startActivity(backToGamesCenterActivity)
+                    val backIntent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
+                    startActivity(backIntent)
                     finish()
                 }
                 backTimer.schedule(object : TimerTask() {
@@ -165,13 +375,20 @@ class MemoryGameActivity : AppCompatActivity() {
                 }, 3000)
             }
         })
+
         backBtn.setOnClickListener {
             confirmBackWithBtnInt ++
             if (confirmBackWithBtnInt == 1){
-                Toast.makeText(this, "Clique novamente para desistir", Toast.LENGTH_LONG).show()
+                showCustomSuccessToast(
+                    this,
+                    getString(R.string.click_again_to_give_up),
+                    Toast.LENGTH_LONG,
+                    this.window
+                )
             }
             else if (confirmBackWithBtnInt > 1){
-                startActivity(backToGamesCenterActivity)
+                val backIntent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
+                startActivity(backIntent)
                 finish()
             }
             backTimer.schedule(object : TimerTask() {
@@ -180,145 +397,115 @@ class MemoryGameActivity : AppCompatActivity() {
                 }
             }, 3000)
         }
-        phaseTxt = findViewById(R.id.phaseCounter)
-        phaseTxt.text = getString(R.string.phase, gamePhase)
-        timerProgress.max = 120
 
-        card1?.setOnClickListener {
-            card1?.isEnabled = false
+        card1.setOnClickListener {
+            card1.isEnabled = false
             cardType = "card1"
             gameplayLogic(card1)
         }
-        card2?.setOnClickListener {
-            card2?.isEnabled = false
+
+        card2.setOnClickListener {
+            card2.isEnabled = false
             cardType = "card2"
             gameplayLogic(card2)
         }
-        card3?.setOnClickListener {
-            card3?.isEnabled = false
+
+        card3.setOnClickListener {
+            card3.isEnabled = false
             cardType = "card3"
             gameplayLogic(card3)
         }
-        card4?.setOnClickListener {
-            card4?.isEnabled = false
+
+        card4.setOnClickListener {
+            card4.isEnabled = false
             cardType = "card4"
             gameplayLogic(card4)
         }
-        card5?.setOnClickListener {
-            card5?.isEnabled = false
+
+        card5.setOnClickListener {
+            card5.isEnabled = false
             cardType = "card5"
             gameplayLogic(card5)
         }
-        card6?.setOnClickListener {
-            card6?.isEnabled = false
+
+        card6.setOnClickListener {
+            card6.isEnabled = false
             cardType = "card6"
             gameplayLogic(card6)
         }
-        card7?.setOnClickListener {
-            card7?.isEnabled = false
+
+        card7.setOnClickListener {
+            card7.isEnabled = false
             cardType = "card7"
             gameplayLogic(card7)
         }
-        card8?.setOnClickListener {
-            card8?.isEnabled = false
+
+        card8.setOnClickListener {
+            card8.isEnabled = false
             cardType = "card8"
             gameplayLogic(card8)
         }
-        db.collection("USERS")
-            .document(uid!!)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    coin = document.getLong("coin")!!
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(ContentValues.TAG, "get failed with ", exception)
-            }
+    }
 
-        newGame()
+    override fun onPause() {
+        super.onPause()
+        isTimerRunning = false
+        savedProgress = progress
+        playerFlipCardAnswer.pause()
+        playerBackgroundSound.pause()
+        playerMatchCards.pause()
+        timer.cancel()
+        timer.purge()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isTimerRunning = true
+        val currentPlaybackPosition = playerBackgroundSound.currentPosition
+        playerBackgroundSound.seekTo(currentPlaybackPosition)
+        playerBackgroundSound.play()
+        timer = Timer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        loadingDialog.hide()
+        timer.cancel()
+        ttaskk.cancel()
+        playerFlipCardAnswer.release()
+        playerBackgroundSound.release()
+        playerMatchCards.release()
+    }
+
+    fun startTimer() {
         ttaskk = object : TimerTask() {
             override fun run() {
                 runOnUiThread {
                     progress--
-                    timertxt?.text = getString(R.string.seconds_remaining, progress)
+                    val minutes: Int = progress / 60
+                    val seconds: Int = progress % 60
+                    timerTxt.text = formatTime(minutes, seconds)
                     timerProgress.progress = progress
                     if (progress == 0 || progress < 1) {
-                        if (boolPhase1){
-                            val cont = coin + 250
-                            val addEventProgress = collectStarsProgress + 250
-                            db.collection("USERS")
-                                .document(uid)
-                                .update("coin", cont)
-                                .addOnSuccessListener {
-                                    dailyEvent.update("collectStarsQuest", addEventProgress)
-                                        .addOnSuccessListener {
-                                            val intent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
-                                            startActivity(intent)
-                                            this@MemoryGameActivity.finish()
-                                            timer.cancel()
-                                        }
-                                }
-                        } else if (boolPhase2){
-                            val cont2 = coin + 200
-                            val addEventProgress2 = collectStarsProgress + 250
-                            db.collection("USERS")
-                                .document(uid)
-                                .update("coin", cont2)
-                                .addOnSuccessListener {
-                                    dailyEvent.update("collectStarsQuest", addEventProgress2)
-                                        .addOnSuccessListener {
-                                            val intent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
-                                            startActivity(intent)
-                                            this@MemoryGameActivity.finish()
-                                            timer.cancel()
-                                        }
-                                }
-                        } else if (boolPhase3){
-                            val cont3 = coin + 250
-                            val addEventProgress3 = collectStarsProgress + 250
-                            db.collection("USERS")
-                                .document(uid)
-                                .update("coin", cont3)
-                                .addOnSuccessListener {
-                                    dailyEvent.update("collectStarsQuest", addEventProgress3)
-                                        .addOnSuccessListener {
-                                            val intent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
-                                            startActivity(intent)
-                                            this@MemoryGameActivity.finish()
-                                            timer.cancel()
-                                        }
-                                }
-                        } else if (boolPhase4){
-                            val cont4 = coin + 300
-                            val addEventProgress4 = collectStarsProgress + 300
-                            db.collection("USERS")
-                                .document(uid)
-                                .update("coin", cont4)
-                                .addOnSuccessListener {
-                                    dailyEvent.update("collectStarsQuest", addEventProgress4)
-                                        .addOnSuccessListener {
-                                            val intent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
-                                            startActivity(intent)
-                                            this@MemoryGameActivity.finish()
-                                            timer.cancel()
-                                        }
-                                }
-                        }
-                        else {
-                            val intent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
-                            startActivity(intent)
-                            this@MemoryGameActivity.finish()
-                            timer.cancel()
-                        }
-
+                        timer.cancel()
+                        ttaskk.cancel()
+                        val loadingDialog = LoadingDialog(this@MemoryGameActivity)
+                        loadingDialog.show()
+                        updateUserCoinsAndEventProgress()
                     }
                 }
             }
         }
-        timer.scheduleAtFixedRate(ttaskk, 100, 900)
-        levelGenerator()
+        if (isTimerRunning) {
+            timer.scheduleAtFixedRate(ttaskk, 100, 900)
+        } else {
+            progress = savedProgress
+            timer.scheduleAtFixedRate(ttaskk, 100, 900)
+        }
+    }
 
+    private fun calculateVipLevel(vipPoints: Long): Int {
+        return (vipPoints / 500).toInt()
     }
 
     private fun levelGenerator() {
@@ -429,37 +616,39 @@ class MemoryGameActivity : AppCompatActivity() {
     }
 
     private fun openAnimation(_card: ImageView?) {
+        playerFlipCardAnswer.seekToDefaultPosition()
+        playerFlipCardAnswer.play()
         val anim1 = ObjectAnimator.ofFloat(_card, "ScaleX", 1f, 0f)
         anim1.duration = 100
         anim1.start()
         timer1 = object : TimerTask() {
             override fun run() {
                 runOnUiThread {
-                    if(boolPhase1){
+                    if(areInFirstPhase){
                         showCard(
                             _card,
                             (cardVarMap[cardType])!!.toString().toDouble()
                         )
                     }
-                    if (boolPhase2){
+                    if (areInSecondPhase){
                         showRoosterCard(
                             _card,
                             (cardVarMap[cardType])!!.toString().toDouble()
                         )
                     }
-                     if (boolPhase3){
+                     if (areInThirdPhase){
                         showPigCard(_card,
                             (cardVarMap[cardType])!!.toString().toDouble())
                     }
-                    if (boolPhase4){
+                    if (areInFourthPhase){
                         showChihuahuaCard(_card,
                             (cardVarMap[cardType])!!.toString().toDouble())
                     }
-                    if (boolPhase5){
+                    if (areInFifthPhase){
                         showTeddyCard(_card,
                             (cardVarMap[cardType])!!.toString().toDouble())
                     }
-                    if (boolPhase6){
+                    if (areInSixthPhase){
                         showLionCard(_card,
                             (cardVarMap[cardType])!!.toString().toDouble())
                     }
@@ -493,42 +682,42 @@ class MemoryGameActivity : AppCompatActivity() {
     private fun cardSetEnable(_setEnable: Boolean) {
         if (_setEnable) {
             if (!matchedCardList.contains("card1")) {
-                card1?.isEnabled = true
+                card1.isEnabled = true
             }
             if (!matchedCardList.contains("card2")) {
-                card2?.isEnabled = true
+                card2.isEnabled = true
             }
             if (!matchedCardList.contains("card3")) {
-                card3?.isEnabled = true
+                card3.isEnabled = true
             }
             if (!matchedCardList.contains("card4")) {
-                card4?.isEnabled = true
+                card4.isEnabled = true
             }
             if (!matchedCardList.contains("card5")) {
-                card5?.isEnabled = true
+                card5.isEnabled = true
             }
             if (!matchedCardList.contains("card6")) {
-                card6?.isEnabled = true
+                card6.isEnabled = true
             }
             if (!matchedCardList.contains("card7")) {
-                card7?.isEnabled = true
+                card7.isEnabled = true
             }
             if (!matchedCardList.contains("card8")) {
-                card8?.isEnabled = true
+                card8.isEnabled = true
             }
         } else {
-            card1?.isEnabled = false
-            card2?.isEnabled = false
-            card3?.isEnabled = false
-            card4?.isEnabled = false
-           card5?.isEnabled = false
-            card6?.isEnabled = false
-            card7?.isEnabled = false
-            card8?.isEnabled = false
+            card1.isEnabled = false
+            card2.isEnabled = false
+            card3.isEnabled = false
+            card4.isEnabled = false
+            card5.isEnabled = false
+            card6.isEnabled = false
+            card7.isEnabled = false
+            card8.isEnabled = false
         }
     }
 
-    private fun newGame() {
+    fun startGame() {
         cardSetEnable(true)
         gameStart = true
     }
@@ -542,48 +731,117 @@ class MemoryGameActivity : AppCompatActivity() {
         ) {
             matchedCardList.add(clickedCard[0])
             matchedCardList.add(clickedCard[1])
-            total += 6.25
             clickedCard.clear()
             if (matchedCardList.size == 8) {
-                if (boolPhase1){
-                    boolPhase1 = false
-                    boolPhase2 = true
-                    gamePhase = "2/6"
-                    phaseTxt.text = getString(R.string.phase, gamePhase)
+                if (areInFirstPhase){
+                    isFirstPhaseDone = true
+                    loadingDialog.show()
+                    updateUserCoinsAndEventProgress()
                 }
-                 else if (boolPhase2) {
-                    boolPhase2 = false
-                    boolPhase3 = true
-                    gamePhase = "3/6"
-                    phaseTxt.text = getString(R.string.phase, gamePhase)
+                 else if (areInSecondPhase) {
+                    isSecondPhaseDone = true
+                    loadingDialog.show()
+                    updateUserCoinsAndEventProgress()
                 }
-                 else if (boolPhase3){
-                    boolPhase3 = false
-                    boolPhase4 = true
-                    gamePhase = "4/6"
-                    phaseTxt.text = getString(R.string.phase, gamePhase)
+                 else if (areInThirdPhase){
+                    isThirdPhaseDone = true
+                    loadingDialog.show()
+                    updateUserCoinsAndEventProgress()
                 }
-                 else if (boolPhase4){
-                    boolPhase4 = false
-                    boolPhase5 = true
-                    gamePhase = "5/6"
-                    phaseTxt.text = getString(R.string.phase, gamePhase)
+                 else if (areInFourthPhase){
+                    isFourthPhaseDone = true
+                    loadingDialog.show()
+                    updateUserCoinsAndEventProgress()
                 }
-                 else if (boolPhase5){
-                    boolPhase5 = false
-                    boolPhase6 = true
-                    gamePhase = "6/6"
-                    phaseTxt.text = getString(R.string.phase, gamePhase)
+                 else if (areInFifthPhase){
+                    isFifthPhaseDone = true
+                    loadingDialog.show()
+                    updateUserCoinsAndEventProgress()
                 }
-                else if (boolPhase6){
-                    boolPhase5 = false
-                    boolPhase6 = true
-                    gamePhase = "6/6"
-                    phaseTxt.text = getString(R.string.phase, gamePhase)
+                else if (areInSixthPhase){
+                    isSixthPhaseDone = true
+                    loadingDialog.show()
+                    updateUserCoinsAndEventProgress()
+                } else {
+                    updateUserCoinsAndEventProgress()
                 }
-                resetGame()
-                map.clear()
+
             }
+        } else {
+            playerFlipCardAnswer.seekToDefaultPosition()
+            playerFlipCardAnswer.play()
+        }
+    }
+
+    private fun updateUserCoinsAndEventProgress() {
+        if (!getIntentExtraValue) {
+            val bonusPercentage = if (vipLevel < 33) {
+                (vipLevel * 3) / 100f
+            } else {
+                (vipLevel * 4) / 100f
+            }
+            var baseBonusAmount: Float = if (
+                isFirstPhaseDone ||
+                    isSecondPhaseDone ||
+                    isThirdPhaseDone ||
+                    isFourthPhaseDone ||
+                    isFifthPhaseDone ||
+                    isSixthPhaseDone
+            ) {
+                memoryHighestReward
+            } else {
+                memoryLowestReward
+            }
+            bonusAmount = baseBonusAmount * bonusPercentage
+            baseBonusAmount += bonusAmount
+
+                val newCoinAmount: Float = coin + baseBonusAmount
+                val newProgressAmount: Int = collectStarsProgress + baseBonusAmount.roundToInt()
+                val updateDailyEventData: HashMap<String, Any> = hashMapOf(
+                    "collectedStars" to newProgressAmount
+                )
+                userData
+                    .update("coins", newCoinAmount)
+                    .addOnSuccessListener {
+                        dailyEvent
+                            .get()
+                            .addOnSuccessListener {
+                                dailyEvent.update(updateDailyEventData)
+                                    .addOnSuccessListener {
+                                        intent = Intent(this@MemoryGameActivity, GamesCenterActivity::class.java)
+                                        intent.putExtra("earnedCoins", baseBonusAmount)
+                                        playerFlipCardAnswer.release()
+                                        playerBackgroundSound.release()
+                                        playerMatchCards.release()
+                                        startActivity(intent)
+                                        this@MemoryGameActivity.finish()
+                                    }
+                            }
+                            .addOnFailureListener { exception ->
+                                showCustomErrorToast(
+                                    this,
+                                    getString(R.string.error_, exception.message.toString()),
+                                    Toast.LENGTH_LONG,
+                                    this.window
+                                )
+                            }
+
+                    }
+                    .addOnFailureListener { exception ->
+                        showCustomErrorToast(
+                            this,
+                            getString(R.string.error_, exception.message.toString()),
+                            Toast.LENGTH_LONG,
+                            this.window
+                        )
+                    }
+        } else {
+            val intent = Intent(this, GamesCenterActivity::class.java)
+            playerFlipCardAnswer.release()
+            playerBackgroundSound.release()
+            playerMatchCards.release()
+            startActivity(intent)
+            this@MemoryGameActivity.finish()
         }
     }
 
@@ -643,7 +901,6 @@ class MemoryGameActivity : AppCompatActivity() {
     }
 
     private fun resetGame(){
-
         //ttaskk!!.cancel()
         Handler(Looper.getMainLooper()).postDelayed({
             matchedCardList.clear()
@@ -659,66 +916,35 @@ class MemoryGameActivity : AppCompatActivity() {
             click = 0.0
             genPos = 0.0
             genCardType = 0.0
-genCardList.clear()
+            genCardList.clear()
             clickedCard.clear()
             clickedCard = ArrayList<String>()
             cardVarMap.clear()
-            cardVarMap = HashMap<String?, Any>()
+            cardVarMap = HashMap()
             cardSetEnable(false)
-            newGame()
+            startGame()
             levelGenerator()
         }, 500)
     }
 
-    @Deprecated("")
-    fun showMessage(_s: String?) {
-        Toast.makeText(applicationContext, _s, Toast.LENGTH_SHORT).show()
-    }
-
-    @Deprecated("")
-    fun getLocationX(_v: View): Int {
-        val _location = IntArray(2)
-        _v.getLocationInWindow(_location)
-        return _location[0]
-    }
-
-    @Deprecated("")
-    fun getLocationY(_v: View): Int {
-        val _location = IntArray(2)
-        _v.getLocationInWindow(_location)
-        return _location[1]
-    }
-
-    @Deprecated("")
-    fun getRandom(_min: Int, _max: Int): Int {
-        val random = Random()
-        return random.nextInt(_max - _min + 1) + _min
-    }
-
-    @Deprecated("")
-    fun getCheckedItemPositionsToArray(_list: ListView): ArrayList<Double> {
-        val _result = ArrayList<Double>()
-        val _arr = _list.checkedItemPositions
-        for (_iIdx in 0 until _arr.size()) {
-            if (_arr.valueAt(_iIdx)) _result.add(_arr.keyAt(_iIdx).toDouble())
+    private fun formatTime(minutes: Int, seconds: Int): String {
+        return if (minutes > 0) {
+            getString(R.string.remaining_time, minutes, seconds)
+        } else {
+            getString(R.string.remaining_time_seconds, seconds)
         }
-        return _result
     }
 
-    @Deprecated("")
-    fun getDip(_input: Int): Float {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            _input.toFloat(),
-            resources.displayMetrics
+    private fun gradientTextEffect() {
+        val textShader: Shader = LinearGradient(
+            0f, 24f, 0f, gameName.textSize,
+            intArrayOf(
+                Color.parseColor("#CED2FD"),
+                Color.parseColor("#767B9B")
+            ),
+            null,
+            Shader.TileMode.MIRROR
         )
+        gameName.paint.shader = textShader
     }
-
-    @get:Deprecated("")
-    val displayWidthPixels: Int
-        get() = resources.displayMetrics.widthPixels
-
-    @get:Deprecated("")
-    val displayHeightPixels: Int
-        get() = resources.displayMetrics.heightPixels
 }

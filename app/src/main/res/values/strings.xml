@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Star Games App</string>
-    <string name="main_daily_entries">Daily entries: %d/15</string>
-    <string name="special_daily_entries">Daily entries: %1$d/10</string>
+    <string name="main_daily_entries">Daily ticket usage: %d/%d</string>
+    <string name="special_daily_entries">Daily ticket usage: 0/10</string>
+    <string name="enter_your_email_address">Enter your email address</string>
     <string name="enter_your_email">Enter your email address</string>
     <string name="create_a_password">Create a password</string>
     <string name="re_enter_password">Re-enter your password</string>
@@ -26,19 +27,538 @@
     <string name="daily_event_desc">Reach the points goal to receive valuable items!</string>
     <string name="points_big">POINTS: %1$d</string>
     <string name="missions_big">MISSIONS</string>
-    <string name="collect_500_stars">Collect 500 Stars</string>
+    <string name="collect_250_stars">Collect %d Stars</string>
     <string name="receive">RECEIVE</string>
     <string name="incomplete">INCOMPLETE</string>
-    <string name="use_5_tickets">Use 5 Tickets</string>
+    <string name="use_50_tickets">Use %d Tickets</string>
     <string name="enter_the_app">Enter the app</string>
     <string name="memory_game">MEMORY GAME</string>
-    <string name="memory_game_desc">Match the figures using\nyour visual memory.</string>
+    <string name="memory_game_desc">Match the figures using your\nvisual memory.</string>
     <string name="seconds_remaining">Seconds remaining: %1$d</string>
     <string name="phase">Phase: %s</string>
-    <string name="rewards_big">REWARDS</string>
+    <string name="rewards_big">REWARD(S)</string>
     <string name="prizes_big">PRIZE(S)</string>
     <string name="collected">COLLECTED</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
+    <string name="change_email_textview_desc">If you would like to change the email address you created an account with in the app, you can do so by entering a new email address below.</string>
+    <string name="change_e_mail">Change E-mail</string>
+    <string name="for_security_reasons_enter_your_pass">For security reasons, please enter your password to confirm your identity.</string>
+    <string name="enter_the_new_e_mail">Enter the new e-mail</string>
+    <string name="big_change_email">CHANGE E-MAIL</string>
+    <string name="verify">VERIFY</string>
+    <string name="successful_verification">Successful verification!</string>
+    <string name="incorrect_password">Incorrect password.</string>
+    <string name="email_successfully_updated">Email successfully updated!</string>
+    <string name="you_need_an_account_to_use_the_app">You need an account to use the app.</string>
+    <string name="recent_authentication_required">Recent authentication required.</string>
+    <string name="invalid_credentials">Invalid credentials. Check your email and password and try again.</string>
+    <string name="the_email_provided_is_already_in_use">The email provided is already associated with another account. Please try with another email.</string>
+    <string name="unknown_error_try_contacting_support">Unknown error. Try contacting support.</string>
+    <string name="too_many_requests_in_a_short_period_of_time">Too many requests in a short period of time!</string>
+    <string name="check_your_internet_connection">Check your internet connection!</string>
+    <string name="error_">Error: %s</string>
+    <string name="user_not_found">User not found</string>
+    <string name="help_and_support">Help and support</string>
+    <string name="configurations">CONFIGURATIONS</string>
+    <string name="manage_account">Manage account</string>
+    <string name="small_configurations">Configurations</string>
+    <string name="privacy_policy">Privacy \nPolicy</string>
+    <string name="terms_of_use">Terms of\nUse</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
+    <string name="lorem_ipsum" translatable="false">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="forgot_your_password">FORGOT YOUR PASSWORD?</string>
+    <string name="enter_an_email_address_to_which_we_will_nsend_you_a_reset_link_password">Enter an email address to which we will  send you a reset link password.</string>
+    <string name="send_email">SEND EMAIL</string>
+    <string name="small_forgot_your_password">Forgot your password?</string>
+    <string name="please_try_again_in_a_few_seconds">Please, try again in a few seconds!</string>
+    <string name="exchange_stars">Exchange Stars</string>
+    <string name="big_save">SAVE</string>
+    <string name="define_pix_key">DEFINE PIX KEY</string>
+    <string name="set_a_pix_key_for_us_to_send_you_the_money_to_your_bank_account">Set a PIX key for us to send you the money to your bank account</string>
+    <string name="enter_your_pix_key">Enter your PIX key</string>
+    <string name="define_an_email">DEFINE AN EMAIL</string>
+    <string name="set_an_email_to_which_we_will_send_your_digital_gift_card_code">Set an email to which we will send your digital gift card code</string>
+    <string name="enter_an_email">Enter an email</string>
+    <string name="remaining_time">Remaining time: %1$d minute(s) : %2$d second(s)</string>
+    <string name="remaining_time_seconds">Remaining time: %1$d second(s)</string>
+    <string name="on_cooldown">On cooldown</string>
+    <string name="touch_again_to_close_the_app">Touch again to close the app</string>
+    <string name="click_again_to_give_up">Click again to give up</string>
+    <string name="cancel">CANCEL</string>
+    <string name="okay">OKAY</string>
+    <string name="when_accessing_the_game_without_nusing_tickets_you_will_not_receive_nstars_do_you_want_to_nplay_anyway">When accessing the game without  using tickets, you will not receive  Stars. Do you want to  play anyway?</string>
+    <string name="access_without_ticket">Access without Ticket</string>
+    <string name="button_cancel_action" translatable="false">Button cancel action</string>
+    <string name="play">PLAY</string>
+    <string name="coming_soon">Coming soon!</string>
+    <string name="to_access_this_area_you_must_be_vip_1_or_above">To access this area, you must be VIP 1 or above.</string>
+    <string name="vip_benefits">VIP BENEFITS %d</string>
+    <string name="star_gain">Star Gain</string>
+    <string name="star_gain_percentage" translatable="false">+%d%%</string>
+    <string name="shadow_game">SHADOW GAME</string>
+    <string name="errors">Errors: %d/5</string>
+    <string name="you_lose_the_game">YOU LOSE THE GAME!</string>
+    <string name="show_division_math_operation" translatable="false">%d ÷ %d = ?</string>
+    <string name="show_addiction_math_operation" translatable="false">%d + %d = ?</string>
+    <string name="show_multiplication_math_operation" translatable="false">%d x %d = ?</string>
+    <string name="show_subtraction_math_operation" translatable="false">%d ÷ %d = ?</string>
+    <string name="what_is_the_capital_of_france">What is the capital of France?</string>
+    <string name="paris">Paris</string>
+    <string name="london">London</string>
+    <string name="rome">Rome</string>
+    <string name="madrid">Madrid</string>
+    <string name="who_painted_the_mona_lisa">Who painted the \"Mona Lisa\"?</string>
+    <string name="vincent_van_gogh">Vincent Van Gogh</string>
+    <string name="leonardo_da_vinci">Leonardo da Vinci</string>
+    <string name="pablo_picasso">Pablo Picasso</string>
+    <string name="michelangelo">Michelangelo</string>
+    <string name="venus">Venus</string>
+    <string name="mars">Mars</string>
+    <string name="jupiter">Jupiter</string>
+    <string name="saturn">Saturn</string>
+    <string name="what_is_the_primary_color">What is the primary color?</string>
+    <string name="white">White</string>
+    <string name="green">Green</string>
+    <string name="black">Black</string>
+    <string name="red">Red</string>
+    <string name="pacific">Pacific</string>
+    <string name="what_is_the_biggest_ocean_in_the_world">What is the biggest ocean in the world?</string>
+    <string name="arctic">Arctic</string>
+    <string name="indian">Indian</string>
+    <string name="atlantic">Atlantic</string>
+    <string name="who_wrote_the_harry_potter_series_of_books">Who wrote the \"Harry Potter\" series of books?</string>
+    <string name="roald_dahl">Roald Dahl</string>
+    <string name="j_k_rowling">J.K. Rowling</string>
+    <string name="rick_riordan">Rick Riordan</string>
+    <string name="suzanne_collins">Suzanne Collins</string>
+    <string name="what_is_the_country_with_the_largest_population_in_the_world">What is the country with the largest population in the world?</string>
+    <string name="india">India</string>
+    <string name="brazil">Brazil</string>
+    <string name="china">China</string>
+    <string name="united_states">United States</string>
+    <string name="what_is_the_fastest_land_animal">What is the fastest land animal?</string>
+    <string name="leopard">Leopard</string>
+    <string name="tiger">Tiger</string>
+    <string name="horse">Horse</string>
+    <string name="cheetah">Cheetah</string>
+    <string name="what_is_the_chemical_formula_of_water">What is the chemical formula of water?</string>
+    <string name="h2o" translatable="false">H2O</string>
+    <string name="co2" translatable="false">CO2</string>
+    <string name="nacl" translatable="false">NaCl</string>
+    <string name="o2" translatable="false">O2</string>
+    <string name="who_was_the_first_man_to_step_on_the_moon">Who was the first man to step on the moon?</string>
+    <string name="buzz_aldrin" translatable="false">Buzz Aldrin</string>
+    <string name="neil_armstrong" translatable="false">Neil Armstrong</string>
+    <string name="alan_shepard" translatable="false">Alan Shepard</string>
+    <string name="yuri_gagarin" translatable="false">Yuri Gagarin</string>
+    <string name="what_is_the_capital_of_australia">What is the capital of Australia?</string>
+    <string name="melbourne">Melbourne</string>
+    <string name="sydney">Sydney</string>
+    <string name="canberra">Canberra</string>
+    <string name="perth">Perth</string>
+    <string name="which_is_the_largest_desert_in_the_world">Which is the largest desert in the world?</string>
+    <string name="arabian_desert">Arabian Desert</string>
+    <string name="gobi_desert">Gobi Desert</string>
+    <string name="antarctica">Antarctica</string>
+    <string name="sahara_desert">Sahara Desert</string>
+    <string name="who_painted_the_famous_artwork_the_starry_night">Who painted the famous artwork \"The Starry Night?\"</string>
+    <string name="claude_monet" translatable="false">Claude Monet</string>
+    <string name="tarsila_do_amaral" translatable="false">Tarsila do Amaral</string>
+    <string name="what_is_the_tallest_mountain_in_the_world">What is the tallest mountain in the world?</string>
+    <string name="k2" translatable="false">K2</string>
+    <string name="mount_everest">Mount Everest</string>
+    <string name="mount_fuji">Mount Fuji</string>
+    <string name="mount_kilimanjaro">Mount Kilimanjaro</string>
+    <string name="who_invented_the_telephone">Who invented the telephone?</string>
+    <string name="isaac_newton" translatable="false">Isaac Newton</string>
+    <string name="nikola_tesla" translatable="false">Nikola Tesla</string>
+    <string name="thomas_edison" translatable="false">Thomas Edison</string>
+    <string name="alexander_graham_bell" translatable="false">Alexander Graham Bell</string>
+    <string name="which_planet_is_known_as_the_red_planet">Which planet is known as the \"Red Planet?\"</string>
+    <string name="earth">Earth</string>
+    <string name="how_many_units_are_in_a_dozen">How many units are in a dozen?</string>
+    <string name="_6_units">6 units</string>
+    <string name="_12_units">12 units</string>
+    <string name="_15_units">15 units</string>
+    <string name="_24_units">24 units</string>
+    <string name="who_wrote_the_play_romeo_and_juliet">Who wrote the play \"Romeo and Juliet\"?</string>
+    <string name="william_shakespeare" translatable="false">William Shakespeare</string>
+    <string name="tennessee_williams" translatable="false">Tennessee Williams</string>
+    <string name="arthur_miller" translatable="false">Arthur Miller</string>
+    <string name="oscar_wilde" translatable="false">Oscar Wilde</string>
+    <string name="what_is_the_collective_of_dogs">What is the collective of dogs?</string>
+    <string name="pack">Pack</string>
+    <string name="flock">Flock</string>
+    <string name="gang">Gang</string>
+    <string name="herd">Herd</string>
+    <string name="the_adjective_venous_is_related_to">The adjective \"venous\" is related to:</string>
+    <string name="vern">Vern</string>
+    <string name="vein">Vein</string>
+    <string name="venon">Venom</string>
+    <string name="vegan">Vegan</string>
+    <string name="compensation_for_loss_is_called">Compensation for loss is called...</string>
+    <string name="indexing">Indexing</string>
+    <string name="indemnity">Indemnity</string>
+    <string name="deficit">Deficit</string>
+    <string name="indebted">indebted</string>
+    <string name="what_are_the_vowels_in_the_american_alphabet">What are the vowels in the American alphabet?</string>
+    <string name="a_e_i_z_and_u">\"A\", \"E\", \"I\", \"Z\" and \"U\"</string>
+    <string name="a_e_i_o_and_y">\"A\", \"E\", \"I\", \"O\" and \"Y\"</string>
+    <string name="u_o_i_e_and_b">\"U\", \"O\", \"I\", \"E\" and \"B\"</string>
+    <string name="a_e_i_o_and_u">\"A\", \"E\", \"I\", \"O\" and \"U\"</string>
+    <string name="the_object_drawn_in_the_center_of_the_flag_of_argentina_is_a">The object drawn in the center of the flag of Argentina is a...</string>
+    <string name="sun">Sun</string>
+    <string name="moon">Moon</string>
+    <string name="star">Star</string>
+    <string name="sickle_and_hammer">Sickle and hammer</string>
+    <string name="who_was_the_god_of_thunder_in_greek_mythology">Who was the god of thunder in Greek mythology?</string>
+    <string name="poseidon">Poseidon</string>
+    <string name="zeus">Zeus</string>
+    <string name="apollo">Apollo</string>
+    <string name="hades">Hades</string>
+    <string name="which_goddess_was_known_as_the_goddess_of_love_and_beauty">Which goddess was known as the goddess of love and beauty?</string>
+    <string name="hera">Hera</string>
+    <string name="athena">Athena</string>
+    <string name="aphrodite">Aphrodite</string>
+    <string name="artemis">Artemis</string>
+    <string name="which_god_was_considered_the_god_of_the_seas_and_earthquakes">Which god was considered the god of the seas and earthquakes?</string>
+    <string name="hephaestus">Hephaestus</string>
+    <string name="dionysus">Dionysus</string>
+    <string name="which_god_was_lord_of_the_dead_and_ruled_the_underworld">Which god was lord of the dead and ruled the underworld?</string>
+    <string name="hermes">Hermes</string>
+    <string name="which_god_was_the_god_of_the_sun_music_and_poetry">Which god was the god of the sun, music and poetry?</string>
+    <string name="ares">Ares</string>
+    <string name="what_is_the_process_by_which_plants_make_their_own_food">What is the process by which plants make their own food?</string>
+    <string name="digestion">Digestion</string>
+    <string name="perspiration">Perspiration</string>
+    <string name="photosynthesis">Photosynthesis</string>
+    <string name="breathing">Breathing</string>
+    <string name="what_is_the_strongest_natural_substance_on_earth">What is the strongest natural substance on Earth?</string>
+    <string name="wood">Wood</string>
+    <string name="glass">Glass</string>
+    <string name="iron">Iron</string>
+    <string name="diamond">Diamond</string>
+    <string name="if_enzo_was_born_in_2023_how_old_will_he_be_in_2032">If Enzo was born in 2023, how old will he be in 2033?</string>
+    <string name="_10_years_old">10 years old</string>
+    <string name="_13_years_old">13 years old</string>
+    <string name="_03_years_old">03 years old</string>
+    <string name="_32_years_old">33 years old</string>
+    <string name="julia_had_5_apples_and_shared_them_equally_with_her_2_friends_is_it_correct_to_say_that_julia_would_have">Julia had 9 apples and she decided to divide them equally between her and her 2 friends. How many apples would each of them have?</string>
+    <string name="_4_apples">Each would have 9 apples</string>
+    <string name="_1_apple">Each would have 3 apples</string>
+    <string name="_2_apple">Each would have 2 apples</string>
+    <string name="_1_2_apple">Each would have 1 apple</string>
+    <string name="it_is_correct_to_say_that_3_3_is_equal_to">It is correct to say that 3 + 3 is equal to:</string>
+    <string name="_6" translatable="false">6</string>
+    <string name="_12" translatable="false">12</string>
+    <string name="_8" translatable="false">8</string>
+    <string name="_24" translatable="false">24</string>
+    <string name="who_founded_the_microsoft_company">Who founded the Microsoft company?</string>
+    <string name="larry_ellison" translatable="false">Larry Ellison</string>
+    <string name="elon_musk" translatable="false">Elon Musk</string>
+    <string name="jeff_bezos" translatable="false">Jeff Bezos</string>
+    <string name="bill_gates" translatable="false">Bill Gates</string>
+    <string name="dark_colored_fizzy_drink_from_a_company_founded_in_1892">Dark colored, fizzy drink from a company founded in 1892?</string>
+    <string name="coca_cola" translatable="false">Coca-Cola</string>
+    <string name="sprite" translatable="false">Sprite</string>
+    <string name="fanta" translatable="false">Fanta</string>
+    <string name="pepsi" translatable="false">Pepsi</string>
+    <string name="which_animal_has_black_and_white_stripes_and_is_known_for_being_fast_and_agile">Which animal has black and white stripes and is known for being fast and agile?</string>
+    <string name="zebra">Zebra</string>
+    <string name="elephant">Elephant</string>
+    <string name="which_animal_flies_and_has_a_diet_based_on_flower_nectar">Which animal flies and has a diet based on flower nectar?</string>
+    <string name="butterfly">Butterfly</string>
+    <string name="bird">Bird</string>
+    <string name="bee">Bee</string>
+    <string name="bat">Bat</string>
+    <string name="which_animal_lives_in_water_has_gills_and_fins">Which animal lives in water, has gills and fins?</string>
+    <string name="turtle">Turtle</string>
+    <string name="dolphin">Dolphin</string>
+    <string name="penguin">Penguin</string>
+    <string name="shark">Shark</string>
+    <string name="who_was_the_leader_of_the_independence_movement_in_brazil">Who was the leader of the independence movement in Brazil?</string>
+    <string name="dom_pedro_i" translatable="false">Dom Pedro I</string>
+    <string name="pedro_lvares_cabral" translatable="false">Pedro Álvares Cabral</string>
+    <string name="dom_pedro_ii" translatable="false">Dom Pedro II</string>
+    <string name="tiradentes" translatable="false">Tiradentes</string>
+    <string name="who_was_the_famous_pacifist_leader_who_fought_for_the_civil_rights_of_african_americans_in_the_united_states">Who was the famous pacifist leader who fought for the civil rights of African Americans in the United States?</string>
+    <string name="abraham_lincoln" translatable="false">Abraham Lincoln</string>
+    <string name="martin_luther_king_jr" translatable="false">Martin Luther King Jr.</string>
+    <string name="george_washington" translatable="false">George Washington</string>
+    <string name="thomas_jefferson" translatable="false">Thomas Jefferson</string>
+    <string name="in_what_year_did_world_war_ii_take_place">In what year did World War II take place?</string>
+    <string name="_1945" translatable="false">1945</string>
+    <string name="_1960" translatable="false">1960</string>
+    <string name="_1939" translatable="false">1939</string>
+    <string name="_1950" translatable="false">1950</string>
+    <string name="who_was_the_south_african_leader_who_fought_apartheid_and_became_the_country_s_first_black_president">Who was the South African leader who fought apartheid and became the country\'s first black president?</string>
+    <string name="thabo_mbeki" translatable="false">Thabo Mbeki</string>
+    <string name="desmond_tutu" translatable="false">Desmond Tutu</string>
+    <string name="jacob_zuma" translatable="false">Jacob Zuma</string>
+    <string name="nelson_mandela" translatable="false">Nelson Mandela</string>
+    <string name="what_is_the_subject_of_the_sentence_the_dog_barks_in_the_backyard">What is the subject of the sentence: \"The dog barks in the backyard.\"?</string>
+    <string name="the_dog">The dog</string>
+    <string name="barks">Barks</string>
+    <string name="in_the_backyard">In the backyard</string>
+    <string name="the">The</string>
+    <string name="what_is_the_antonym_of_the_word_cheerful">What is the antonym of the word \"cheerful\"?</string>
+    <string name="happy">Happy</string>
+    <string name="sad">Sad</string>
+    <string name="content">Content</string>
+    <string name="radiant">Radiant</string>
+    <string name="what_is_the_comparative_degree_of_superiority_of_the_adjective_beautiful">What is the comparative degree of superiority of the adjective \"beautiful\"?</string>
+    <string name="handsome">Handsome</string>
+    <string name="pretty">Pretty</string>
+    <string name="more_beautiful">More beautiful</string>
+    <string name="elegant">Elegant</string>
+    <string name="who_discovered_brazil">Who discovered Brazil?</string>
+    <string name="christopher_columbus">Christopher Columbus</string>
+    <string name="vasco_da_gama">Vasco da Gama</string>
+    <string name="ferdinand_magellan">Ferdinand Magellan</string>
+    <string name="pedro_alvares_cabral">Pedro Alvares Cabral</string>
+    <string name="what_is_the_perimeter_of_a_square_with_sides_measuring_6_cm_each">What is the perimeter of a square with sides measuring 6 cm each?</string>
+    <string name="_24_centimeters">24 centimeters</string>
+    <string name="_12_centimeters">12 centimeters</string>
+    <string name="_18_centimeters">18 centimeters</string>
+    <string name="_36_centimeters">36 centimeters</string>
+    <string name="what_is_the_result_of_the_following_operation_8_4_2">What is the result of the following operation: (8 + 4) - 2?</string>
+    <string name="the_result_is_12">The result is 12</string>
+    <string name="the_result_is_10">The result is 10</string>
+    <string name="the_result_is_14">The result is 14</string>
+    <string name="the_result_is_8">The result is 8</string>
+    <string name="what_is_the_result_of_the_following_operation_4_2_2">What is the result of the following operation: (4 - 2) - 2?</string>
+    <string name="the_result_is_2">The result is 2</string>
+    <string name="the_result_is_4">The result is 4</string>
+    <string name="the_result_is_0">The result is 0</string>
+    <string name="the_result_is_6">The result is 6</string>
+    <string name="what_is_the_result_of_the_following_operation_4_x_5">What is the result of the following operation: 4 x 5?</string>
+    <string name="the_result_is_25">The result is 25</string>
+    <string name="the_result_is_40">The result is 40</string>
+    <string name="the_result_is_50">The result is 50</string>
+    <string name="the_result_is_20">The result is 20</string>
+    <string name="what_is_the_result_of_the_following_operation_40_15">What is the result of the following operation: 40 - 15?</string>
+    <string name="the_result_is_35">The result is 35</string>
+    <string name="the_result_is_55">The result is 55</string>
+    <string name="what_is_the_result_of_the_following_operation_8_2">What is the result of the following operation: 8 ÷ 2?</string>
+    <string name="it_has_wings_and_can_fly_through_the_skies_it_is_known_to_migrate_great_distances_what_animal_is_this">It has wings and can fly through the skies. It is known to migrate great distances. What animal is this?</string>
+    <string name="dog">Dog</string>
+    <string name="duck">Duck</string>
+    <string name="eagle">Eagle</string>
+    <string name="rabbit">Rabbit</string>
+    <string name="farm_animal_that_produces_milk_it_has_four_legs_and_horns_what_animal_is_this">Farm animal that produces milk. It has four legs and horns. What animal is this?</string>
+    <string name="cat">Cat</string>
+    <string name="cow">Cow</string>
+    <string name="how_many_months_does_a_year_have">How many months does a year have?</string>
+    <string name="_12_months">12 months</string>
+    <string name="_10_months">10 months</string>
+    <string name="_11_months">11 months</string>
+    <string name="_13_months">13 months</string>
+    <string name="what_is_the_capital_of_china">What is the capital of China?</string>
+    <string name="shanghai">Shanghai</string>
+    <string name="beijing">Beijing</string>
+    <string name="hong_kong">Hong Kong</string>
+    <string name="canton">Canton</string>
+    <string name="what_civilization_built_the_pyramids_in_egypt">What civilization built the pyramids in Egypt?</string>
+    <string name="mesopotamia">Mesopotamia</string>
+    <string name="greek">Greek</string>
+    <string name="egyptian">Egyptian</string>
+    <string name="roman">Roman</string>
+    <string name="what_is_the_largest_country_by_land_area">What is the largest country by land area?</string>
+    <string name="canada">Canada</string>
+    <string name="russia">Russia</string>
+    <string name="what_is_the_most_populous_city_in_the_world">What is the most populous city in the world?</string>
+    <string name="tokyo">Tokyo</string>
+    <string name="s_o_paulo">São Paulo</string>
+    <string name="what_is_the_closest_planet_to_the_sun">What is the closest planet to the Sun?</string>
+    <string name="mercury">Mercury</string>
+    <string name="what_is_the_largest_rainforest_in_the_world">What is the largest rainforest in the world?</string>
+    <string name="atlantic_forest">Atlantic Forest</string>
+    <string name="thick">Thick</string>
+    <string name="amazon_rainforest">Amazon Rainforest</string>
+    <string name="pantanal">Pantanal</string>
+    <string name="what_is_the_popular_brazilian_festival_known_for_its_dances_costumes_and_samba_school_parades">What is the popular Brazilian festival known for its dances, costumes and samba school parades?</string>
+    <string name="june_celebration">June celebration</string>
+    <string name="saint_john">Saint John</string>
+    <string name="carnival">Carnival</string>
+    <string name="oktoberfest">Oktoberfest</string>
+    <string name="what_is_the_name_of_the_official_currency_of_brazil">What is the name of the official currency of Brazil?</string>
+    <string name="real">Real</string>
+    <string name="peso">Peso</string>
+    <string name="euro">Euro</string>
+    <string name="what_is_the_name_of_the_official_currency_of_united_states">What is the name of the official currency of United States?</string>
+    <string name="who_owns_amazon_company">Who owns Amazon company?</string>
+    <string name="mark_zuckerberg" translatable="false">Mark Zuckerberg</string>
+    <string name="animal_that_flies_is_known_for_its_ability_to_rotate_its_head_almost_360_degrees_what_animal_is_this">Animal that flies is known for its ability to rotate its head almost 360 degrees. What animal is this?</string>
+    <string name="seagull">Seagull</string>
+    <string name="owl">Owl</string>
+    <string name="barra" translatable="false">%d/%d</string>
+    <string name="bombay">Bombay</string>
+    <string name="dollar">Dollar</string>
+    <string name="math_game">MATH GAME</string>
+    <string name="solve_math_operations_in_n_a_short_period_of_time">Solve math operations in\na short period of time.</string>
+    <string name="quiz_game">QUIZ GAME</string>
+    <string name="test_your_general_knowledge_n_by_answering_questions">Test your general knowledge\nby answering questions</string>
+    <string name="daily_limit_reached">You have reached the ticket limit!</string>
+    <string name="emulator_detected">Emulator detected</string>
+    <string name="enter_an_referral_code">Enter an referral code</string>
+    <string name="invalid_friend_code">Invalid friend code.</string>
+    <string name="not_enough_coins_collect_more_by_playing">Not enough coins, collect more by playing!</string>
+    <string name="friend_code_not_found">Friend code not found</string>
+    <string name="request_made_successfully_wait_up_to_7_days">Request made successfully, wait up to 7 days!</string>
+    <string name="invited_friends_">INVITED FRIENDS: %d</string>
+    <string name="code_successfully_copied_to_your_clipboard">Code successfully copied to your clipboard</string>
+    <string name="share_code_string">Discover the exciting Star Games universe! Install our app from the Play Store right now using the code: \"%s"\ and immerse yourself in a unique experience of fun and challenging games. Take advantage of the opportunity to earn 100 bonus Stars and help me too! Also, you can earn PIX money while having fun. Download Star Games today and enjoy unforgettable moments of fun and winning possibilities. Come join our community and embark on this adventure of stars and fun! https://play.google.com/store/apps/details?id=drawable_nodpi.android Don't forget to use the code: \"%s"\</string>
+    <string name="referral_program">REFERRAL PROGRAM</string>
+    <string name="event_rules">EVENT RULES</string>
+    <string name="the_daily_collection_event_is_a_daily_event_">The \"Daily Collection\" event is a daily event that occurs every day at 00:00 UTC. At that time, the point count will reset and you will have the opportunity to start collecting again.</string>
+    <string name="the_objective_of_the_event_is_">The objective of the event is to collect points to unlock exclusive rewards. The more points you accumulate, the better rewards you can get.</string>
+    <string name="there_are_several_ways_to_earn_points_during_the_event">"There are several ways to earn points during the event:\n"</string>
+    <string name="playing_the_games_available_in_our_app">"- Playing the games available in our app;\n"</string>
+    <string name="logging_in_daily">"- Logging in daily;\n"</string>
+    <string name="spending_your_gamer_tickets">- Spending your \"Gamer Tickets\"!</string>
+    <string name="participate_in_the_daily_collect_event_">Participate in the \"Daily Collect\" event every day, play the games, use your tickets and log in to collect as many points as possible and unlock amazing rewards!</string>
+    <string name="share_your_unique_invite_code_with_your_friends">Share your unique invite code with your friends;</string>
+    <string name="when_a_friend_signs_up_">When a friend signs up for the app using your invitation code, they will receive a bonus of 100 Stars;</string>
+    <string name="each_time_that_friend_spends_stars_in_the_app_you_ll_receive_25_of_the_stars_they_spend_as_a_reward">Each time that friend spends Tickets in the app, you\'ll receive 1 Star as a reward;</string>
+    <string name="the_stars_you_earn_can_be_used_to_unlock_amazing_in_app_rewards">The Stars you earn can be used to unlock amazing in-app rewards.</string>
+    <string name="select_an_e_mail_app">Select an e-mail app</string>
+    <string name="you_must_have_invited_at_least_1_friend_to_perform_this_action">You must have invited at least 1 friend and be VIP 1+ to perform this action.</string>
+    <string name="enter_your_friend_referral_code">Enter your friend code</string>
+    <string name="continue_string">CONTINUE</string>
+    <string name="confirm_action">CONFIRM ACTION</string>
+    <string name="by_proceeding_your_vip_progress_will_be_reset_are_you_sure_you_want_to_continue">By proceeding, your VIP progress will be reset. Are you sure you want to continue?</string>
+    <string name="_5_000_stars">-5.000 STARS</string>
+    <string name="_10_000_stars">-10.000 STARS</string>
+    <string name="_20_000_stars">-20.000 STARS</string>
+    <string name="_2_500_stars">-2.500 STARS</string>
+    <string name="withdraw_history">Withdraw History</string>
+    <string name="exchange_stars_mini">Exchange Stars</string>
+    <string name="invite_your_friends">Invite friends</string>
+    <string name="order_id_successfully_copied_to_your_clipboard">Order ID successfully copied to your clipboard</string>
+    <string name="amount">AMOUNT: %s</string>
+    <string name="method">METHOD: %s</string>
+    <string name="date">DATE: %s</string>
+    <string name="status">STATUS: %s</string>
+    <string name="id">ID: %s</string>
+    <string name="withdraw_history_big">WITHDRAW HISTORY</string>
+    <string name="name_too_short">Name too short</string>
+    <string name="how_to_change_your_password">How to change your password</string>
+    <string name="account">Account</string>
+    <string name="common_questions">Common Questions</string>
+    <string name="events">Events</string>
+    <string name="this_is_the_events_section_of_our_help_center_here_you_will_find_information_about_the_events_that_take_place_in_our_application" translatable="false">This is the \"Events\" section of our Help Center! Here, you will find information about the events that take place in our application.</string>
+    <string name="our_events_are_fun_and_easy_to_attend_they_range_from_simple_games_to_more_complex_challenges_but_they_all_offer_the_chance_to_win_amazing_prizes_you_can_receive_stars_vip_points_and_other_items_for_free" translatable="false">Our events are fun and easy to attend. They range from simple games to more complex challenges, but they all offer the chance to win amazing prizes! You can receive Stars, VIP points and other items for free.</string>
+    <string name="to_participate_simply_choose_an_event_in_the_vertical_tab_on_the_right_side_of_the_application_s_main_screen_be_sure_to_check_each_event_s_rules_and_requirements_to_ensure_your_participation_and_prize_pool_don_t_worry_everything_is_explained_clearly_and_easy_to_understand" translatable="false">To participate, simply choose an event in the vertical tab on the right side of the application\'s main screen. Be sure to check each event\'s rules and requirements to ensure your participation and prize pool. Don\'t worry, everything is explained clearly and easy to understand.</string>
+    <string name="it_is_important_to_note_that_the_events_are_reset_every_day_at_21_00_et_that_means_you_ll_have_a_new_opportunity_to_participate_and_win_prizes_every_day_so_don_t_miss_the_chance_to_participate_and_increase_your_chances_of_winning" translatable="false">It is important to note that the events are reset every day at 21:00 ET. That means you\'ll have a new opportunity to participate and win prizes every day! So, don\'t miss the chance to participate and increase your chances of winning.</string>
+    <string name="we_appreciate_being_part_of_our_community_and_we_are_excited_to_see_you_participate_in_our_daily_events_good_luck_and_have_fun" translatable="false">We appreciate being part of our community and we are excited to see you participate in our daily events. Good luck and have fun!</string>
+    <string name="this_is_the_support_section_of_our_application_which_aims_to_help_you_in_case_of_any_questions_or_problems" translatable="false">This is the \"Support\" section of our application, which aims to help you in case of any questions or problems.</string>
+    <string name="to_contact_us_just_click_on_the_support_button_below_you_can_send_us_an_email_so_that_our_team_can_help_you_in_the_best_way_possible" translatable="false">To contact us, just click on the \"Support\" button below. You can send us an email so that our team can help you in the best way possible.</string>
+    <string name="our_support_team_is_available_to_help_you_anytime_day_or_night_and_we_will_do_our_best_to_respond_quickly_and_with_effective_solutions_to_your_issues" translatable="false">Our support team is available to help you anytime, day or night, and we will do our best to respond quickly and with effective solutions to your issues.</string>
+    <string name="also_in_our_frequently_asked_questions_section_you_ll_find_answers_to_the_most_common_questions_we_receive_from_our_users_we_recommend_that_you_take_a_look_at_this_section_before_contacting_us_as_your_question_may_already_be_answered_there" translatable="false">Also, in our \"Frequently Asked Questions\" section, you\'ll find answers to the most common questions we receive from our users. We recommend that you take a look at this section before contacting us, as your question may already be answered there.</string>
+    <string name="we_appreciate_the_trust_you_place_in_our_app_and_we_are_always_working_to_improve_your_experience_if_you_need_help_don_t_hesitate_to_contact_us_through_the_support_section" translatable="false">We appreciate the trust you place in our app and we are always working to improve your experience. If you need help, don\'t hesitate to contact us through the \"Support\" section.</string>
+    <string name="support">SUPPORT</string>
+    <string name="support_mini">Support</string>
+    <string name="how_to_exchange_stars_to_money" translatable="false">How to exchange Stars to money</string>
+    <string name="how_to_invite_an_friend" translatable="false">How to invite an friend</string>
+    <string name="how_long_does_it_take_for_the_money_to_arrive_in_my_bank_account" translatable="false">How long does it take for the money to arrive in my bank account?</string>
+    <string name="to_change_your_password_you_can_follow_these_steps" translatable="false">To change your password, you can follow these steps:\n</string>
+    <string name="_1_starting_from_the_main_screen_click_on_the_gear_symbol" translatable="false">1. Starting from the main screen, click on the gear symbol;\n</string>
+    <string name="_2_click_on_the_manage_account_option" translatable="false">2. Click on the \"Manage account\" option;\n</string>
+    <string name="_3_click_on_the_change_password_button" translatable="false">3. Click on the \"CHANGE PASSWORD\" button;\n</string>
+    <string name="_4_and_then_just_provide_what_the_dialog_asks_for" translatable="false">4. And then, just provide what the dialog asks for.</string>
+    <string name="we_ll_leave_a_shortcut_below_we_hope_that_s_enough_if_you_need_help_you_can_contact_us_in_the_help_and_support_section" translatable="false">We\'ll leave a shortcut below, we hope that\'s enough, if you need help you can contact us in the \"Help and Support\" section.</string>
+    <string name="go_to_change_password" translatable="false">Go to change password</string>
+    <string name="pending">PENDING</string>
+    <string name="rejected">REJECTED</string>
+    <string name="analysis">ANALYSIS</string>
+    <string name="on_this_screen_you_can_choose_the_games_you_want_to_play">On this screen, you can choose the games you want to play;</string>
+    <string name="when_playing_a_game_you_can_earn_up_to_">When playing a game, you can earn up to 12 stars + VIP bonus, earnings range from 8 to 10 stars (+ bonus), if you can\'t complete a game before time runs out;</string>
+    <string name="when_playing_you_can_close_the_screen_not_the_app_and_time_will_pause_and_start_running_again_when_you_return_to_the_app">When playing, you can close the screen (leave in the background), the time will pause and start running again when you return to the app.</string>
+    <string name="maximum_level">MAXIMUM LEVEL</string>
+    <string name="account_e_mail">Account e-mail</string>
+    <string name="change_e_mail_big">CHANGE E-MAIL</string>
+    <string name="change_password_big">CHANGE PASSWORD</string>
+    <string name="set_up_bank_account">SET UP BANK ACCOUNT</string>
+    <string name="log_out_of_account">LOG OUT OF ACCOUNT</string>
+    <string name="keep_playing_so_you_can_fill_this_up_soon">Keep playing so you can fill this up soon!</string>
+    <string name="vip" translatable="false">VIP</string>
+    <string name="setup_pix">Setup PIX</string>
+    <string name="setup_bank_account">SETUP BANK ACCOUNT</string>
+    <string name="vip_is_a_system_where_">\"VIP\" is a system where you receive many benefits in our application, you can progress in the application faster with each VIP level;</string>
+    <string name="to_evolve_from_vip_level_">To evolve from VIP level, you will need VIP points that can be obtained through events or by watching advertisements;</string>
+    <string name="you_can_watch_ads_by_">You can watch ads by clicking on the button with the \"+\" symbol, each watched ad gives you 33,34 more VIP points, you can watch up to 15 ads per day;</string>
+    <string name="the_daily_limit_for_earning_points_through_ads_resets_every_day_at_">The daily limit for earning points through ads resets every day at 00:00 UTC/20:00 EST.</string>
+    <string name="invite_friends_and_earn_stars">Invite friends and earn Stars!</string>
+    <string name="menu" translatable="false">MENU</string>
+    <string name="the_titanic_ship_sank_in_the_year">The Titanic ship sank in the year:</string>
+    <string name="update_available">UPDATE AVAILABLE</string>
+    <string name="please_update_the_app_msg">Please update the app on the Google store to receive new features and continue to use the Star Games App normally. Click the button below to go to the Google Play Store.</string>
+    <string name="go_update">GO UPDATE</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="checking_installed_version">Checking installed version</string>
+    <string name="initializing_components">Initializing components</string>
+    <string name="checking_authentication">Checking authentication</string>
+    <string name="e_mail_verification">E-MAIL VERIFICATION</string>
+    <string name="we_send_a_link_to_your_email_">We sent a link to %s. Please confirm your email by clicking on the link to activate your account. After confirmation, click the button below.</string>
+    <string name="resend_e_mail">Resend e-mail</string>
+    <string name="checking_email_validation">Checking email validation</string>
+    <string name="cooldown_text">Resend again in %d seconds</string>
+    <string name="my_email_is_verified">My email is verified</string>
+    <string name="try_with_another_email">Try with another email</string>
+    <string name="send_us_a_message">SEND US A MESSAGE</string>
+    <string name="_1000_characters_left">1000 characters left</string>
+    <string name="_100_characters_left">100 characters left</string>
+    <string name="subject">Subject</string>
+    <string name="write_a_message_here">Write a message here</string>
+    <string name="an_error_occurred_please_try_again_later">An error occurred. Please try again later.</string>
+    <string name="what_is_the_biggest_planet_in_the_solar_system">What is the biggest planet in the solar system?</string>
+    <string name="key_pix_defined_successfully">KEY PIX DEFINED SUCCESSFULLY</string>
+    <string name="email_defined_successfully">EMAIL DEFINED SUCCESSFULLY</string>
+    <string name="key_pix_updated_successfully">KEY PIX UPDATED SUCCESSFULLY</string>
+    <string name="browser">Browser</string>
+    <string name="check_your_internet_connection_">Check your internet connection. When connecting to the internet, you can click the button below to return to the main screen.</string>
+    <string name="no_internet_connection">NO INTERNET CONNECTION</string>
+    <string name="verify_connection">VERIFY CONNECTION</string>
 </resources>

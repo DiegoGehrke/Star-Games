@@ -34,9 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/inter_black"
-            android:text="CONVERSE CONOSCO"
+            android:text="@string/send_us_a_message"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_regular"
-        android:text="100 Remaining Chars"
+        android:text="@string/_100_characters_left"
         android:textColor="#F80101"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,9 +62,10 @@
         android:textColorHint="#757575"
         android:textColor="@color/white"
         android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:fontFamily="@font/inter_medium"
         android:textSize="16sp"
-        android:hint="Assunto"
+        android:hint="@string/subject"
         android:maxLength="100"
         app:layout_constraintTop_toBottomOf="@+id/subject_remaining_chars_counter" />
 
@@ -74,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_regular"
-        android:text="1000 Remaining Chars"
+        android:text="@string/_1000_characters_left"
         android:textColor="#F80101"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +89,7 @@
         android:background="@drawable/big_edittext_subject"
         android:fontFamily="@font/inter_medium"
         android:gravity="start"
-        android:hint="Mensagem"
+        android:hint="@string/write_a_message_here"
         android:paddingStart="8dp"
         android:paddingTop="8dp"
         android:maxLength="1000"

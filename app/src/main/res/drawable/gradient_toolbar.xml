@@ -3,8 +3,10 @@
     android:shape="rectangle">
     <gradient
         android:startColor="@color/toolbarStartColor"
+        android:centerColor="@color/toolbarCenterColor"
         android:endColor="@color/toolbarEndColor"
         android:type="linear"
         android:angle="630"/>
-    <stroke android:width="2dp" android:color="#4E4721"/>
+    <stroke android:color="#645B2D"
+        android:width="1dp"/>
 </shape>

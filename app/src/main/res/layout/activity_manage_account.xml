@@ -35,15 +35,17 @@
             android:fontFamily="@font/inter_black"
             android:text="Manage Account"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/frame"
-        android:layout_width="wrap_content"
-        android:layout_height="600dp"
-        android:layout_marginTop="-100dp"
-        android:src="@drawable/frame_account_management"
+        android:layout_width="0dp"
+        android:layout_height="408dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/acc_manag_frame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,26 +55,26 @@
         android:id="@+id/txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_bold"
-        android:text="E-mail da conta"
+        android:text="@string/account_e_mail"
         android:textColor="#C2D3FF"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/frame"
+        app:layout_constraintStart_toStartOf="@+id/change_email_btn"
         app:layout_constraintTop_toTopOf="@+id/frame" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/show_user_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/inter_bold"
-        android:text="minecraftpirata000@gmail.com"
+        android:text=""
         android:textColor="#D7DBFB"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/frame"
+        app:layout_constraintStart_toStartOf="@+id/change_email_btn"
         app:layout_constraintTop_toBottomOf="@+id/txt1" />
 
     <ImageView
@@ -80,19 +82,17 @@
         android:layout_width="300dp"
         android:layout_height="64dp"
         android:layout_marginTop="24dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
         android:src="@drawable/manage_account_btn"
         app:layout_constraintEnd_toEndOf="@+id/frame"
         app:layout_constraintStart_toStartOf="@+id/frame"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/show_user_email" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
-        android:text="MUDAR E-MAIL"
+        android:text="@string/change_e_mail_big"
         android:textColor="#272D42"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/change_email_btn"
@@ -105,8 +105,6 @@
         android:layout_width="300dp"
         android:layout_height="64dp"
         android:layout_marginTop="24dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
         android:src="@drawable/manage_account_btn"
         app:layout_constraintEnd_toEndOf="@+id/frame"
         app:layout_constraintStart_toStartOf="@+id/frame"
@@ -117,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
-        android:text="MUDAR SENHA"
+        android:text="@string/change_password_big"
         android:textColor="#272D42"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/change_password_btn"
@@ -126,23 +124,46 @@
         app:layout_constraintEnd_toEndOf="@+id/change_password_btn" />
 
     <ImageView
+        android:id="@+id/set_payment_preferences_btn"
+        android:layout_width="300dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/manage_account_btn"
+        app:layout_constraintEnd_toEndOf="@+id/frame"
+        app:layout_constraintStart_toStartOf="@+id/frame"
+        app:layout_constraintTop_toBottomOf="@+id/change_password_btn" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/set_up_bank_account"
+        android:textColor="#272D42"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/set_payment_preferences_btn"
+        app:layout_constraintTop_toTopOf="@+id/set_payment_preferences_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/set_payment_preferences_btn"
+        app:layout_constraintEnd_toEndOf="@+id/set_payment_preferences_btn" />
+
+    <ImageView
         android:id="@+id/log_out_btn"
         android:layout_width="300dp"
         android:layout_height="64dp"
-        android:layout_marginTop="-32dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/red_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame" />
+        app:layout_constraintEnd_toEndOf="@+id/frame"
+        app:layout_constraintStart_toStartOf="@+id/frame"
+        app:layout_constraintTop_toBottomOf="@+id/set_payment_preferences_btn" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
-        android:text="SAIR"
+        android:text="@string/log_out_of_account"
         android:textColor="#58181C"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/log_out_btn"
         app:layout_constraintTop_toTopOf="@+id/log_out_btn"
         app:layout_constraintBottom_toBottomOf="@+id/log_out_btn"

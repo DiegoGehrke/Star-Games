@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.GradientDrawable
 import android.widget.ProgressBar
 
 class LoadingDialog(var context: Context) {
@@ -22,6 +21,8 @@ class LoadingDialog(var context: Context) {
     }
 
     fun hide() {
-        dialog.dismiss()
+        if (::dialog.isInitialized && dialog.isShowing) {
+            dialog.dismiss()
+        }
     }
 }

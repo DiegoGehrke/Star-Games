@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".VipActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/gradient_toolbar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/big_back_btn" />
+
+        <TextView
+            android:id="@+id/screen_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/inter_black"
+            android:text="@string/vip"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/vip_level_frame"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/vip_level_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <TextView
+        android:id="@+id/vip_level_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2.5dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:text=""
+        android:textColor="#C7AD6E"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/vip_level_frame"
+        app:layout_constraintEnd_toEndOf="@+id/vip_level_frame"
+        app:layout_constraintStart_toStartOf="@+id/vip_level_frame"
+        app:layout_constraintTop_toTopOf="@+id/vip_level_frame" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/vip_progress_frame"
+        app:layout_constraintBottom_toBottomOf="@+id/vip_icon"
+        app:layout_constraintEnd_toStartOf="@+id/vip_add_points"
+        app:layout_constraintStart_toEndOf="@+id/vip_icon"
+        app:layout_constraintTop_toTopOf="@+id/vip_icon" />
+
+    <ImageView
+        android:id="@+id/vip_icon"
+        android:layout_width="64dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/vip_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vip_level_frame" />
+
+    <ImageView
+        android:id="@+id/vip_add_points"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/add_more_vip_points"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vip_level_frame" />
+
+    <TextView
+        android:id="@+id/user_current_vip_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_medium"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/vip_add_points"
+        app:layout_constraintStart_toEndOf="@+id/vip_icon"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/vip_level_benefits_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="148dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/vip_frame_benefits_drawable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vip_icon" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="-136dp"
+        android:src="@drawable/vip_locked"
+        app:layout_constraintEnd_toEndOf="@+id/vip_level_benefits_frame"
+        app:layout_constraintStart_toStartOf="@+id/vip_level_benefits_frame"
+        app:layout_constraintTop_toTopOf="@+id/vip_level_benefits_frame" />
+
+    <TextView
+        android:id="@+id/current_vip_level_benefits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/vip_benefits"
+        android:textColor="#F2DE78"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/vip_level_benefits_frame"
+        app:layout_constraintStart_toStartOf="@id/vip_level_benefits_frame"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="48dp"
+        android:src="@drawable/new_line_test"
+        app:layout_constraintEnd_toEndOf="@id/vip_level_benefits_frame"
+        app:layout_constraintStart_toStartOf="@id/vip_level_benefits_frame"
+        app:layout_constraintTop_toBottomOf="@+id/current_vip_level_benefits" />
+
+    <ImageView
+        android:id="@+id/first_benefit"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:src="@drawable/benefits_layout_drawable"
+        app:layout_constraintEnd_toEndOf="@+id/vip_level_benefits_frame"
+        app:layout_constraintStart_toStartOf="@+id/vip_level_benefits_frame"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+
+    <TextView
+        android:id="@+id/first_benefit_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_extrabold"
+        android:text="@string/star_gain"
+        android:textColor="#D4D8F8"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/first_benefit"
+        app:layout_constraintStart_toStartOf="@+id/first_benefit"
+        app:layout_constraintTop_toTopOf="@+id/first_benefit" />
+
+    <TextView
+        android:id="@+id/first_benefit_bonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/inter_extrabold"
+        android:text="@string/star_gain_percentage"
+        android:textColor="#A3FC82"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/first_benefit"
+        app:layout_constraintEnd_toEndOf="@+id/first_benefit"
+        app:layout_constraintTop_toTopOf="@+id/first_benefit" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/back"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vip_level_benefits_frame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vip_level_benefits_frame" />
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/next"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vip_level_benefits_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vip_level_benefits_frame" />
+
+
+    <ImageView
+        android:id="@+id/help_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/help_icon"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

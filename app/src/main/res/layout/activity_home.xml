@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
     tools:ignore="ContentDescription"
-    android:background="@drawable/home_background">
+    android:id="@+id/background"
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
-        android:text="A"
+        android:text=""
         android:textColor="#E2C766"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -68,42 +69,39 @@
         app:layout_constraintTop_toBottomOf="@+id/username_txt" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/get_more_vip"
         android:layout_width="120dp"
-        android:layout_height="36dp"
+        android:layout_height="56dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
-        android:src="@drawable/vip_layout"
+        android:src="@drawable/vip_frame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/add_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.425" />
+        android:id="@+id/vip_level_frame"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="92dp"
+        android:src="@drawable/vip_level_frame"
+        app:layout_constraintBottom_toBottomOf="@+id/get_more_vip"
+        app:layout_constraintEnd_toEndOf="@+id/get_more_vip"
+        app:layout_constraintTop_toTopOf="@+id/get_more_vip" />
 
     <TextView
-        android:id="@+id/vip_level__txt"
+        android:id="@+id/vip_level_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23.5dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="1.5dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/inter_bold"
         android:text=""
-        android:textColor="@color/white"
-        android:fontFamily="@font/inter_medium"
+        android:textColor="#C7AD6E"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/vip_level_frame"
+        app:layout_constraintEnd_toEndOf="@+id/vip_level_frame"
+        app:layout_constraintStart_toStartOf="@+id/vip_level_frame"
+        app:layout_constraintTop_toTopOf="@+id/vip_level_frame" />
 
     <ImageView
         android:id="@+id/configs_btn"
@@ -113,7 +111,7 @@
         android:layout_marginEnd="24dp"
         android:src="@drawable/config_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/get_more_vip" />
 
     <ImageView
         android:id="@+id/menu_btn"
@@ -123,19 +121,29 @@
         android:layout_marginEnd="24dp"
         android:src="@drawable/menu_icon"
         app:layout_constraintEnd_toStartOf="@id/configs_btn"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/get_more_vip" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="64dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/get_more_tickets"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:visibility="gone"
+        android:id="@+id/survey_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/survey_icon"
+        app:layout_constraintEnd_toStartOf="@id/menu_btn"
+        app:layout_constraintTop_toBottomOf="@+id/get_more_vip" />
 
+    <ImageView
+        android:id="@+id/get_more_tickets"
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ticket_frame"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -151,34 +159,24 @@
         android:id="@+id/tickets_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="30dp"
         app:layout_goneMarginEnd="8dp"
-        android:fontFamily="@font/inter_medium"
-        android:text="0"
-        android:textColor="#FFE791"
+        android:fontFamily="@font/inter_semibold"
+        android:text=""
+        android:textColor="#FFE897"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/get_more_tickets"
+        app:layout_constraintEnd_toEndOf="@+id/get_more_tickets"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+        app:layout_constraintTop_toTopOf="@+id/get_more_tickets" />
 
-    <ImageView
-        android:id="@+id/line2"
-        android:layout_width="9999dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/new_line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/games_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/games"
         android:textColor="@color/white"
@@ -186,7 +184,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line2" />
+        app:layout_constraintTop_toBottomOf="@+id/get_more_tickets" />
 
     <ImageView
         android:id="@+id/first_game_frame"
@@ -199,7 +197,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/games_txt" />
 
-    <com.star.games.android.StrokeTextView
+    <TextView
         android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -212,10 +210,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/first_game_frame"
         app:layout_constraintStart_toStartOf="@+id/first_game_frame"
-        app:layout_constraintTop_toTopOf="@+id/first_game_frame"
-        app:stv_strokeColor="#8388A5"
-        app:stv_strokeIs="true"
-        app:stv_strokeWidth="4" />
+        app:layout_constraintTop_toTopOf="@+id/first_game_frame" />
 
     <ImageView
         android:id="@+id/first_frame_line"
@@ -226,7 +221,7 @@
         app:layout_constraintStart_toStartOf="@+id/first_game_frame"
         app:layout_constraintTop_toBottomOf="@+id/categories" />
 
-    <com.star.games.android.StrokeTextView
+    <TextView
         android:id="@+id/daily_entries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -239,10 +234,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/first_frame_line"
         app:layout_constraintEnd_toEndOf="@+id/first_frame_line"
         app:layout_constraintStart_toStartOf="@+id/first_game_frame"
-        app:layout_constraintTop_toTopOf="@+id/first_frame_line"
-        app:stv_strokeColor="#8388A5"
-        app:stv_strokeIs="true"
-        app:stv_strokeWidth="2" />
+        app:layout_constraintTop_toTopOf="@+id/first_frame_line" />
 
     <LinearLayout
         android:id="@+id/access_principal_games_btn"
@@ -279,7 +271,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_game_frame" />
 
-    <com.star.games.android.StrokeTextView
+    <TextView
         android:id="@+id/special_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -293,10 +285,7 @@
         app:layout_constraintEnd_toEndOf="@+id/second_game_frame"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="@+id/second_game_frame"
-        app:layout_constraintTop_toTopOf="@+id/second_game_frame"
-        app:stv_strokeColor="#8388A5"
-        app:stv_strokeIs="true"
-        app:stv_strokeWidth="4"/>
+        app:layout_constraintTop_toTopOf="@+id/second_game_frame" />
 
     <ImageView
         android:id="@+id/second_game_line"
@@ -307,7 +296,7 @@
         app:layout_constraintStart_toStartOf="@+id/second_game_frame"
         app:layout_constraintTop_toBottomOf="@+id/special_category" />
 
-    <com.star.games.android.StrokeTextView
+    <TextView
         android:id="@+id/special_daily_entries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -320,10 +309,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/second_game_frame"
         app:layout_constraintEnd_toEndOf="@+id/second_game_line"
         app:layout_constraintStart_toStartOf="@+id/second_game_line"
-        app:layout_constraintTop_toTopOf="@+id/second_game_frame"
-        app:stv_strokeColor="#8388A5"
-        app:stv_strokeIs="true"
-        app:stv_strokeWidth="2"/>
+        app:layout_constraintTop_toTopOf="@+id/second_game_frame" />
 
     <LinearLayout
         android:id="@+id/access_special_btn"
@@ -350,24 +336,29 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="200dp"
         android:layout_marginTop="64dp"
+        android:scaleType="fitXY"
         android:src="@drawable/event_frame"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line2" />
+        app:layout_constraintTop_toBottomOf="@+id/get_more_tickets" />
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/daily_event"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
+        android:padding="4dp"
         android:src="@drawable/daily_collect_event_icon"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintStart_toStartOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
     <TextView
+        android:visibility="gone"
+        android:id="@+id/daily_event_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/linden_hill_italic"

@@ -14,12 +14,9 @@
         android:background="@drawable/gradient_toolbar"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/back_btn"
@@ -28,12 +25,12 @@
             android:src="@drawable/big_back_btn" />
 
         <TextView
-            android:id="@+id/event_name"
+            android:id="@+id/screen_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/inter_black"
-            android:text="CONFIGURATIONS"
+            android:text="@string/configurations"
             android:textColor="@color/white"
             android:textSize="24sp" />
     </LinearLayout>
@@ -42,10 +39,10 @@
         android:id="@+id/help_support_btn"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/help_support_icon"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/manage_account_btn"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
@@ -53,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
-        android:text="Ajuda e suporte"
+        android:text="@string/help_and_support"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/help_support_btn"
@@ -67,6 +64,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/account_managment_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/help_support_btn"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -74,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
-        android:text="Gerenciar conta"
+        android:text="@string/manage_account"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/manage_account_btn"
@@ -82,34 +80,13 @@
         app:layout_constraintTop_toBottomOf="@+id/manage_account_btn" />
 
     <ImageView
-        android:id="@+id/configurations_btn"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/configurations_icon"
-        app:layout_constraintStart_toEndOf="@id/manage_account_btn"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_black"
-        android:text="Conofigurações"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/configurations_btn"
-        app:layout_constraintStart_toStartOf="@+id/configurations_btn"
-        app:layout_constraintTop_toBottomOf="@+id/configurations_btn" />
-
-    <ImageView
         android:id="@+id/policy_privacy_btn"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/policy_privacy_icon"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/terms_of_use_btn"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -117,7 +94,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
         android:gravity="center"
-        android:text="Política de\nPrivacidade"
+        android:text="@string/privacy_policy"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/policy_privacy_btn"
@@ -130,7 +107,8 @@
         android:layout_height="52dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/policy_privacy_icon"
+        android:src="@drawable/terms_of_use_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/policy_privacy_btn"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -139,7 +117,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
         android:gravity="center"
-        android:text="Termos de\nUso"
+        android:text="@string/terms_of_use"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/terms_of_use_btn"
