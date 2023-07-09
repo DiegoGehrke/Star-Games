@@ -38,3 +38,5 @@
 do apk e mudanças de versões para uma mudança mínima, fora o tempo que leva até a aprovação do app na Play Store e é de graça.
 - Não foi bem um aprendizado mas me atentei a fazer um código autoexplicativo, com métodos e funções que tenham apenas uma
 responsabilidade, nomes autodescritivos... Quem diria que a leitura do livro Clean Code iria impactar tanto meu modo de programar!
+
+*LINK NA GOOGLE PLAY STORE: https://play.google.com/store/apps/details?id=com.star.games.android*.
