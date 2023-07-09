@@ -21,7 +21,8 @@
 - Gerenciamento de conta, como redefinição de senha e e-mail;
 - Banco de dados;
 - Notificações do app para o usuário em tempo real;
-- Coleta falhas no app.
+- Coleta falhas no app;
+- Se adapta a diferentes tamanhos de telas em celulares.
 
 *FERRAMENTAS USADAS*
 - Firebase: Firestore database, Authentication, Remote Config, Crashlytics, Analytics, Messaging;
