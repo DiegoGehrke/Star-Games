@@ -19,7 +19,9 @@
 - Verifica se o usuário possui a versão mais recente da loja;
 - Sistema de autenticação do usuário por e-mail;
 - Gerenciamento de conta, como redefinição de senha e e-mail;
-- Banco de dados.
+- Banco de dados;
+- Notificações do app para o usuário em tempo real;
+- Coleta falhas no app.
 
 *FERRAMENTAS USADAS*
 - Firebase: Firestore database, Authentication, Remote Config, Crashlytics, Analytics, Messaging;
