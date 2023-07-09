@@ -1,10 +1,10 @@
   **PROJETO DE APLICATIVO DE GANHAR DINHEIRO**
 
 *COMO O APLICATIVO FUNCIONA?*
-  O 'Star Games App' é um aplicativo que contém alguns jogos, como: Jogo da memória, jogo de matemática, jogo de quiz...
-  O usuário pode ganhar moedas/pontos que são estrelas ao jogar um jogo, caso ele usou um 'ticket gamer', o usuário pode 
-  conseguir tickets ao assistir anúncios.
-  As moedas que o usuário coletou podem ser usadas para transforma-las em dinheiro real.
+ O 'Star Games App' é um aplicativo que contém alguns jogos, como: Jogo da memória, jogo de matemática, jogo de quiz...
+ O usuário pode ganhar moedas/pontos que são estrelas ao jogar um jogo, caso ele usou um 'ticket gamer', o usuário pode 
+ conseguir tickets ao assistir anúncios.
+ As moedas que o usuário coletou podem ser usadas para transforma-las em dinheiro real.
 
 *RECURSOS DO APLICATIVO*
 - Sistema de saque onde o usuário pode trocar suas moedas por dinheiro real e receber via PIX(mais tarde, terá suporte ao PayPal);
