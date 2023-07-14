@@ -48,7 +48,7 @@ responsabilidade, nomes autodescritivos... Quem diria que a leitura do livro Cle
 
 *LINK NA GOOGLE PLAY STORE:* https://play.google.com/store/apps/details?id=com.star.games.android.
 
-*PROJETO QUE FIZ PARA MOSTRAR MINHAS HABILIDADES COM PROGRAMAÇÃO ORIENTADA A OBJETOS NO GITHUB:*
+**PROJETO QUE FIZ PARA MOSTRAR MINHAS HABILIDADES COM PROGRAMAÇÃO ORIENTADA A OBJETOS NO GITHUB:**
 https://github.com/DiegoGehrke/OPP_TEST
 
 FICO TÃO FELIZ QUE VOCÊ CHEGOU ATÉ AQUI, MUITO OBRIGADO!
