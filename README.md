@@ -47,3 +47,8 @@ do apk e mudanças de versões para uma mudança mínima, fora o tempo que leva 
 responsabilidade, nomes autodescritivos... Quem diria que a leitura do livro Clean Code iria impactar tanto meu modo de programar!
 
 *LINK NA GOOGLE PLAY STORE: https://play.google.com/store/apps/details?id=com.star.games.android*.
+
+*PROJETO QUE FIZ PARA MOSTRAR MINHAS HABILIDADES COM PROGRAMAÇÃO ORIENTADA A OBJETOS NO GITHUB:
+https://github.com/DiegoGehrke/OPP_TEST*
+
+FICO TÃO FELIZ QUE VOCÊ CHEGOU ATÉ AQUI, MUITO OBRIGADO!
