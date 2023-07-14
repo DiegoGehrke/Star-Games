@@ -20,7 +20,7 @@ class MainStartActivity : AppCompatActivity(), InitializationListener {
     private var currentUser: FirebaseUser? = null
 
     companion object {
-        const val APP_KEY: String = "19feca29d"
+        const val APP_KEY: String = "ADICIONE SUA PRÓPRIA CHAVE DO IRONSOURCE DASHBOARD!"
     }
 
     private lateinit var initializationStatusTxt: TextView
