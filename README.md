@@ -1,5 +1,11 @@
   **PROJETO DE APLICATIVO DE GANHAR DINHEIRO**
 
+  **IMAGENS USADAS PARA A PUBLICAÇÃO NA PLAY STORE**
+ 
+![unnamed](https://github.com/DiegoGehrke/Star-Games/assets/76628949/bd9a9895-963b-4039-aecc-1e3c8de7e6a3)
+![unnamed (1)](https://github.com/DiegoGehrke/Star-Games/assets/76628949/9e22939e-004a-4484-a689-e4418e2f8fcc)
+![unnamed (2)](https://github.com/DiegoGehrke/Star-Games/assets/76628949/9893bb45-4fab-4a14-b4bf-6f52a992fc36)
+
 *COMO O APLICATIVO FUNCIONA?*
 
  O 'Star Games App' é um aplicativo que contém alguns jogos, como: Jogo da memória, jogo de matemática, jogo de quiz...
