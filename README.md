@@ -1,6 +1,7 @@
   **PROJETO DE APLICATIVO DE GANHAR DINHEIRO**
 
 *COMO O APLICATIVO FUNCIONA?*
+
  O 'Star Games App' é um aplicativo que contém alguns jogos, como: Jogo da memória, jogo de matemática, jogo de quiz...
  O usuário pode ganhar moedas/pontos que são estrelas ao jogar um jogo, caso ele usou um 'ticket gamer', o usuário pode 
  conseguir tickets ao assistir anúncios.
@@ -33,7 +34,7 @@
 - Figma para prototipagem do app, design geral da interface para produção e para recursos de design na Play Store.
 
 *COM ESSE PROJETO APRENDI A:*
-- Usar o Constraint layout do xml (agora pretendo aprender o Jetpack Compose 😅);
+- Usar o Constraint layout;
 - Usar o Firestore database antes eu usava o Realtime Database mas estou estudando SQL;
 - Usar o Firebase Remote Config, muito útil para fazer modificações em tempo real sem ter que ficar enviando atualizações
 do apk e mudanças de versões para uma mudança mínima, fora o tempo que leva até a aprovação do app na Play Store e é de graça.
