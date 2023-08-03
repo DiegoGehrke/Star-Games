@@ -35,7 +35,6 @@
 - Distriuidoras de anúncios: IronSource para fazer a mediação, Unity Ads, InMobi, Pangle, liftoff e AdColony;
 - Android Studio IDE;
 - Kotlin;
-- Chat GPT(produtividade);
 - Figma para prototipagem do app, design geral da interface para produção e para recursos de design na Play Store.
 
 *COM ESSE PROJETO APRENDI A:*
@@ -45,6 +44,9 @@
 do apk e mudanças de versões para uma mudança mínima, fora o tempo que leva até a aprovação do app na Play Store e é de graça.
 - Não foi bem um aprendizado mas me atentei a fazer um código autoexplicativo, com métodos e funções que tenham apenas uma
 responsabilidade, nomes autodescritivos... Quem diria que a leitura do livro Clean Code iria impactar tanto meu modo de programar!
+
+#PROJETO COM MVVM + INJEÇÃO DE DEPENDÊNCIAS
+link: 
 
 *LINK NA GOOGLE PLAY STORE:* https://play.google.com/store/apps/details?id=com.star.games.android.
 
